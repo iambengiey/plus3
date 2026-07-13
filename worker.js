@@ -3,9 +3,20 @@
 // Deploy via Cloudflare dashboard or: wrangler deploy
 // ============================================================
 
-// Raw URL of the logo committed in the same repo.
-// Once a custom domain is live, host logo on that domain and update this URL.
-const LOGO_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
+const LOGO_URL      = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
+const HERO_BG_URL   = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Plus3%20graphic.png';
+const CLIENT_IMGS   = [
+  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%201.avif',
+  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%202.avif',
+  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%203.avif',
+  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%204.avif',
+  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%205.avif',
+  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%206.avif',
+];
+// Duplicate for seamless infinite scroll
+const CAROUSEL_IMGS = [...CLIENT_IMGS, ...CLIENT_IMGS]
+  .map(u => `<img src="${u}" alt="Client logo" class="client-logo" loading="lazy">`)
+  .join('');
 
 const HTML = `<!DOCTYPE html>
 <html lang="en">
@@ -37,7 +48,7 @@ const HTML = `<!DOCTYPE html>
       --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
       --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
 
-      /* Light mode */
+      /* Brand palette — from Brand Style Board */
       --bg:             #f5f6f8;
       --surface:        #ffffff;
       --surface-2:      #f9fafb;
@@ -49,8 +60,8 @@ const HTML = `<!DOCTYPE html>
       --text-faint:     #a0a8bc;
       --text-inverse:   #f8f9fc;
       --primary:        #007b88;
-      --primary-hover:  #005f6a;
-      --primary-hi:     #cce8ec;
+      --primary-hover:  #00a86b;   /* brand green */
+      --primary-hi:     #2dce8e;   /* accent green */
       --shadow-sm: 0 1px 3px rgb(15 20 35 / 0.07);
       --shadow-md: 0 4px 16px rgb(15 20 35 / 0.09), 0 2px 6px rgb(15 20 35 / 0.06);
       --shadow-lg: 0 12px 40px rgb(15 20 35 / 0.13), 0 4px 12px rgb(15 20 35 / 0.08);
@@ -66,7 +77,6 @@ const HTML = `<!DOCTYPE html>
       --font-body:    'Satoshi', 'Inter', sans-serif;
     }
 
-    /* Dark mode — system auto-detect only, no JS toggle */
     @media (prefers-color-scheme: dark) {
       :root {
         --bg:             #0a0d15;
@@ -80,7 +90,7 @@ const HTML = `<!DOCTYPE html>
         --text-faint:     #4e5a78;
         --text-inverse:   #0a0d15;
         --primary:        #38b4c4;
-        --primary-hover:  #5dcad7;
+        --primary-hover:  #2dce8e;
         --primary-hi:     #1a3040;
         --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.3);
         --shadow-md: 0 4px 16px rgb(0 0 0 / 0.45);
@@ -172,57 +182,68 @@ const HTML = `<!DOCTYPE html>
       .nav__mobile .btn-cta-mobile { background: var(--primary); color: var(--text-inverse) !important; text-align: center; margin-top: 1rem; }
     }
 
-    /* ── HERO ── */
+    /* ── HERO — fixed (parallax-free) background image ── */
     .hero {
       min-height: 100dvh; display: flex; flex-direction: column; justify-content: center;
       padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 6rem;
       position: relative; overflow: hidden;
     }
+    /* Static background image — does NOT scroll with the page */
     .hero__bg {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 70% 40%, rgb(0 123 136 / 0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 10% 80%, rgb(0 80 120 / 0.05) 0%, transparent 50%);
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: url('${HERO_BG_URL}');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    /* Dark overlay so text stays readable */
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgb(0 123 136 / 0.82) 0%, rgb(0 168 107 / 0.72) 100%);
     }
     .hero__grid {
       position: absolute; inset: 0;
-      background-image: linear-gradient(rgb(from var(--border) r g b / 0.3) 1px, transparent 1px), linear-gradient(90deg, rgb(from var(--border) r g b / 0.3) 1px, transparent 1px);
+      background-image: linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px);
       background-size: 64px 64px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
     }
     .hero__inner { position: relative; z-index: 1; }
     .hero__badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 1rem; background: rgb(from var(--primary) r g b / 0.08);
-      border: 1px solid rgb(from var(--primary) r g b / 0.2);
+      padding: 0.4rem 1rem; background: rgb(255 255 255 / 0.12);
+      border: 1px solid rgb(255 255 255 / 0.25);
       border-radius: var(--radius-full); font-size: var(--text-xs);
       font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--primary); margin-bottom: 1.5rem;
+      color: #fff; margin-bottom: 1.5rem;
     }
-    .hero__badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); animation: pulse 2s ease-in-out infinite; }
+    .hero__badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary-hi); animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
     .hero__heading {
       font-family: var(--font-display); font-weight: 900;
       font-size: clamp(2.8rem, 1rem + 6vw, 6.5rem);
       line-height: 1.0; letter-spacing: -0.03em;
-      color: var(--text); margin-bottom: 1.5rem;
+      color: #fff; margin-bottom: 1.5rem;
     }
-    .hero__heading em { font-style: normal; color: var(--primary); }
-    .hero__sub { font-size: var(--text-lg); color: var(--text-muted); max-width: 52ch; line-height: 1.6; margin-bottom: 2.5rem; }
+    .hero__heading em { font-style: normal; color: var(--primary-hi); }
+    .hero__sub { font-size: var(--text-lg); color: rgb(255 255 255 / 0.82); max-width: 52ch; line-height: 1.6; margin-bottom: 2.5rem; }
     .hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 1rem 2rem; background: var(--primary); color: var(--text-inverse) !important;
+      padding: 1rem 2rem; background: var(--primary-hi); color: #0f1423 !important;
       border-radius: var(--radius-lg); font-size: var(--text-sm); font-weight: 700; text-decoration: none;
-      box-shadow: 0 1px 3px rgb(0 123 136 / 0.3), 0 4px 12px rgb(0 123 136 / 0.15);
+      box-shadow: 0 1px 3px rgb(45 206 142 / 0.3), 0 4px 12px rgb(45 206 142 / 0.15);
     }
-    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--primary-hover); color: #fff !important; transform: translateY(-1px); }
     .btn-primary:active { transform: translateY(0); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; color: var(--text-muted); border-radius: var(--radius-lg); font-size: var(--text-sm); font-weight: 600; text-decoration: none; border: 1px solid var(--border); }
-    .btn-ghost:hover { color: var(--text); background: var(--surface-offset); }
-    .hero__stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgb(from var(--divider) r g b / 0.7); flex-wrap: wrap; }
-    .hero__stat-value { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; color: var(--text); line-height: 1; }
-    .hero__stat-label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25rem; }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; color: #fff; border-radius: var(--radius-lg); font-size: var(--text-sm); font-weight: 600; text-decoration: none; border: 1px solid rgb(255 255 255 / 0.45); }
+    .btn-ghost:hover { background: rgb(255 255 255 / 0.12); border-color: rgb(255 255 255 / 0.7); }
+    .hero__stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgb(255 255 255 / 0.2); flex-wrap: wrap; }
+    .hero__stat-value { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; color: #fff; line-height: 1; }
+    .hero__stat-label { font-size: var(--text-xs); color: rgb(255 255 255 / 0.65); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25rem; }
 
     /* ── Ticker ── */
     .ticker-section { padding-block: 3rem; border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider); overflow: hidden; background: var(--surface); }
@@ -300,6 +321,35 @@ const HTML = `<!DOCTYPE html>
     .why-card__title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); margin-bottom: 0.75rem; }
     .why-card__body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; max-width: none; }
 
+    /* ── CLIENTS CAROUSEL ── */
+    .clients-section { padding-block: clamp(4rem, 8vw, 7rem); background: var(--surface); border-top: 1px solid var(--divider); }
+    .clients-section .sec-header { margin-bottom: 2.5rem; }
+    .clients-carousel { overflow: hidden; position: relative; }
+    /* fade edges */
+    .clients-carousel::before,
+    .clients-carousel::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+    }
+    .clients-carousel::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+    .clients-carousel::after  { right: 0; background: linear-gradient(to left,  var(--surface), transparent); }
+    .clients-track {
+      display: flex; align-items: center; gap: 3.5rem;
+      animation: client-scroll 32s linear infinite;
+      width: max-content;
+    }
+    .clients-track:hover { animation-play-state: paused; }
+    @keyframes client-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .client-logo {
+      height: 72px; width: auto; max-width: 160px;
+      object-fit: contain; flex-shrink: 0;
+      opacity: 0.65; filter: grayscale(30%);
+      transition: opacity var(--t-fast), filter var(--t-fast), transform var(--t-fast);
+    }
+    .client-logo:hover { opacity: 1; filter: grayscale(0%); transform: scale(1.05); }
+
     /* ── CTA BAND ── */
     .cta-band {
       padding-block: clamp(4rem, 7vw, 6rem);
@@ -326,6 +376,17 @@ const HTML = `<!DOCTYPE html>
     .contact__detail-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgb(from var(--primary) r g b / 0.08); border-radius: var(--radius-md); color: var(--primary); }
     .contact__detail-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-faint); font-weight: 600; }
     .contact__detail-value { font-size: var(--text-sm); font-weight: 500; color: var(--text); margin-top: 0.2rem; }
+    .contact-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap; }
+    .contact-link-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 0.9rem; border-radius: var(--radius-full);
+      font-size: var(--text-xs); font-weight: 600; text-decoration: none;
+      border: 1px solid currentColor; transition: background var(--t-fast), color var(--t-fast);
+    }
+    .contact-link-btn--wa  { color: #25d366; }
+    .contact-link-btn--wa:hover  { background: #25d366; color: #fff; }
+    .contact-link-btn--li  { color: #0a66c2; }
+    .contact-link-btn--li:hover  { background: #0a66c2; color: #fff; }
     .form-wrap { background: var(--surface); border: 1px solid rgb(from var(--border) r g b / 0.6); border-radius: var(--radius-2xl); padding: 2.5rem; box-shadow: var(--shadow-md); }
     .form { display: flex; flex-direction: column; gap: 1.25rem; }
     .form__group { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -560,6 +621,21 @@ const HTML = `<!DOCTYPE html>
     </div>
   </section>
 
+  <!-- CLIENTS CAROUSEL -->
+  <section class="clients-section" aria-labelledby="clients-h">
+    <div class="container">
+      <div class="sec-header fade-in">
+        <p class="sec-label">Our Clients</p>
+        <h2 class="sec-heading" id="clients-h">Trusted by leading businesses</h2>
+      </div>
+    </div>
+    <div class="clients-carousel" aria-label="Client logos">
+      <div class="clients-track">
+        ${CAROUSEL_IMGS}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA BAND -->
   <section class="cta-band" aria-label="Call to action">
     <div class="container--narrow cta-band__inner">
@@ -567,7 +643,7 @@ const HTML = `<!DOCTYPE html>
       <p class="cta-band__sub">Whether you need strategic guidance, specialised talent, or end-to-end software delivery &mdash; let us craft the right solution for you.</p>
       <div class="cta-band__btns">
         <a href="#contact" class="btn-white">Send us a message</a>
-        <a href="tel:+27822635227" class="btn-outline-white">+27 82 263 5227</a>
+        <a href="https://wa.me/27822635227" class="btn-outline-white" target="_blank" rel="noopener">WhatsApp us</a>
       </div>
     </div>
   </section>
@@ -598,8 +674,18 @@ const HTML = `<!DOCTYPE html>
             <div class="contact__detail">
               <div class="contact__detail-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.12 6.12l1.26-1.26a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
               <div>
-                <div class="contact__detail-label">Phone</div>
+                <div class="contact__detail-label">Phone &amp; Socials</div>
                 <div class="contact__detail-value"><a href="tel:+27822635227" style="color:var(--primary);text-decoration:none;">+27 82 263 5227</a></div>
+                <div class="contact-links">
+                  <a href="https://wa.me/27822635227" class="contact-link-btn contact-link-btn--wa" target="_blank" rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    WhatsApp
+                  </a>
+                  <a href="https://www.linkedin.com/company/plus3-solutions" class="contact-link-btn contact-link-btn--li" target="_blank" rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -665,6 +751,8 @@ const HTML = `<!DOCTYPE html>
           <li><a href="#why-plus3">Why Plus3</a></li>
           <li><a href="#contact">Contact Us</a></li>
           <li><a href="mailto:info@plus3.co.za">info@plus3.co.za</a></li>
+          <li><a href="https://wa.me/27822635227" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/plus3-solutions" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
