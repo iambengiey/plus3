@@ -3,6 +3,10 @@
 // Deploy via Cloudflare dashboard or: wrangler deploy
 // ============================================================
 
+// Raw URL of the logo committed in the same repo.
+// Once a custom domain is live, host logo on that domain and update this URL.
+const LOGO_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
+
 const HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +20,11 @@ const HTML = `<!DOCTYPE html>
   <meta property="og:description" content="Dynamic solutions to meet your business needs. 15 years of international consulting experience.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://plus3.co.za">
+  <meta property="og:image" content="${LOGO_URL}">
   <link rel="canonical" href="https://plus3.co.za">
   <link rel="alternate" hreflang="en-za" href="https://plus3.co.za">
   <link rel="alternate" hreflang="en" href="https://plus3.co.za">
+  <link rel="icon" type="image/png" href="${LOGO_URL}">
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 
   <style>
@@ -118,7 +124,7 @@ const HTML = `<!DOCTYPE html>
     .section { padding-block: clamp(4rem, 8vw, 8rem); }
     .section--alt { background: var(--surface); }
 
-    /* ── CSS-native scroll reveal (no JS, no layout shift) ── */
+    /* ── CSS-native scroll reveal ── */
     .fade-in { opacity: 1; }
     @supports (animation-timeline: scroll()) {
       .fade-in { opacity: 0; animation: reveal-fade linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
@@ -130,9 +136,7 @@ const HTML = `<!DOCTYPE html>
     }
     @keyframes reveal-up { to { clip-path: inset(0 0 0 0); opacity: 1; } }
 
-    /* ══════════════════════════════════════════
-       NAVIGATION
-    ══════════════════════════════════════════ */
+    /* ── NAVIGATION ── */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); z-index: 100;
       background: rgb(from var(--bg) r g b / 0.85);
@@ -143,8 +147,7 @@ const HTML = `<!DOCTYPE html>
     .nav.scrolled { box-shadow: var(--shadow-md); }
     .nav__inner { max-width: var(--content-wide); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 4rem); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .nav__logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); flex-shrink: 0; }
-    .nav__logo-text { font-family: var(--font-display); font-weight: 900; font-size: var(--text-lg); letter-spacing: -0.02em; }
-    .nav__logo-text span { color: var(--primary); }
+    .nav__logo img { height: 44px; width: auto; object-fit: contain; display: block; }
     .nav__links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
     .nav__links a { padding: 0.5rem 1rem; font-size: var(--text-sm); font-weight: 500; color: var(--text-muted); text-decoration: none; border-radius: var(--radius-md); }
     .nav__links a:hover { color: var(--text); background: var(--surface-offset); }
@@ -169,9 +172,7 @@ const HTML = `<!DOCTYPE html>
       .nav__mobile .btn-cta-mobile { background: var(--primary); color: var(--text-inverse) !important; text-align: center; margin-top: 1rem; }
     }
 
-    /* ══════════════════════════════════════════
-       HERO
-    ══════════════════════════════════════════ */
+    /* ── HERO ── */
     .hero {
       min-height: 100dvh; display: flex; flex-direction: column; justify-content: center;
       padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 6rem;
@@ -238,9 +239,7 @@ const HTML = `<!DOCTYPE html>
     .sec-body { color: var(--text-muted); max-width: 58ch; margin-top: 1rem; line-height: 1.7; }
     .sec-header { margin-bottom: clamp(3rem, 5vw, 4rem); }
 
-    /* ══════════════════════════════════════════
-       ABOUT
-    ══════════════════════════════════════════ */
+    /* ── ABOUT ── */
     .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: center; }
     @media (max-width: 768px) { .about__grid { grid-template-columns: 1fr; } }
     .about__body { color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
@@ -248,7 +247,7 @@ const HTML = `<!DOCTYPE html>
     .about__quote q { font-style: italic; color: var(--text); line-height: 1.7; display: block; margin-bottom: 0.5rem; }
     .about__quote cite { font-size: var(--text-xs); color: var(--text-muted); font-style: normal; text-transform: uppercase; letter-spacing: 0.06em; }
     .about__visual { background: linear-gradient(145deg, var(--surface) 0%, var(--surface-offset) 100%); border-radius: var(--radius-2xl); padding: 2.5rem; border: 1px solid rgb(from var(--border) r g b / 0.6); box-shadow: var(--shadow-lg); }
-    .about__visual-num { font-family: var(--font-display); font-size: clamp(4rem, 8vw, 7rem); font-weight: 900; line-height: 1; color: rgb(from var(--primary) r g b / 0.12); margin-bottom: 1rem; }
+    .about__logo { width: 160px; margin-bottom: 1.5rem; }
     .about__visual-title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--text); line-height: 1.15; }
     .about__visual-sub { color: var(--text-muted); font-size: var(--text-sm); margin-top: 0.75rem; }
     .about__values { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
@@ -257,9 +256,7 @@ const HTML = `<!DOCTYPE html>
     .about__value-label { font-weight: 700; font-size: var(--text-sm); color: var(--text); }
     .about__value-desc { font-size: var(--text-sm); color: var(--text-muted); margin-top: 0.25rem; }
 
-    /* ══════════════════════════════════════════
-       SERVICES
-    ══════════════════════════════════════════ */
+    /* ── SERVICES ── */
     .services__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; }
     .service-card { background: var(--bg); border: 1px solid rgb(from var(--border) r g b / 0.7); border-radius: var(--radius-xl); padding: 2rem; transition: transform var(--t-slow) var(--ease-out), box-shadow var(--t-slow) var(--ease-out), border-color var(--t-slow) var(--ease-out); position: relative; overflow: hidden; }
     .service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgb(from var(--primary) r g b / 0.04) 0%, transparent 60%); opacity: 0; transition: opacity var(--t-slow); }
@@ -271,9 +268,7 @@ const HTML = `<!DOCTYPE html>
     .service-card__tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; }
     .tag { padding: 0.25rem 0.75rem; background: rgb(from var(--primary) r g b / 0.08); color: var(--primary); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 600; }
 
-    /* ══════════════════════════════════════════
-       HOW WE WORK
-    ══════════════════════════════════════════ */
+    /* ── HOW WE WORK ── */
     .how__grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
     @media (max-width: 768px) { .how__grid { grid-template-columns: 1fr; } }
     .how__steps { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
@@ -296,9 +291,7 @@ const HTML = `<!DOCTYPE html>
     .metric__bar--d3 { animation-delay: 0.45s; }
     @keyframes bar-grow { to { transform: scaleX(1); } }
 
-    /* ══════════════════════════════════════════
-       WHY PLUS3
-    ══════════════════════════════════════════ */
+    /* ── WHY PLUS3 ── */
     .why__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     @media (max-width: 900px) { .why__grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 580px) { .why__grid { grid-template-columns: 1fr; } }
@@ -307,9 +300,7 @@ const HTML = `<!DOCTYPE html>
     .why-card__title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); margin-bottom: 0.75rem; }
     .why-card__body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; max-width: none; }
 
-    /* ══════════════════════════════════════════
-       CTA BAND
-    ══════════════════════════════════════════ */
+    /* ── CTA BAND ── */
     .cta-band {
       padding-block: clamp(4rem, 7vw, 6rem);
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
@@ -325,9 +316,7 @@ const HTML = `<!DOCTYPE html>
     .btn-outline-white { padding: 1rem 2rem; border: 1px solid rgb(255 255 255 / 0.5); color: #fff !important; border-radius: var(--radius-lg); font-size: var(--text-sm); font-weight: 600; text-decoration: none; }
     .btn-outline-white:hover { background: rgb(255 255 255 / 0.1); border-color: rgb(255 255 255 / 0.7); }
 
-    /* ══════════════════════════════════════════
-       CONTACT
-    ══════════════════════════════════════════ */
+    /* ── CONTACT ── */
     .contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 5vw, 5rem); align-items: start; }
     @media (max-width: 768px) { .contact__grid { grid-template-columns: 1fr; } }
     .contact__heading { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 1.5rem; }
@@ -354,14 +343,11 @@ const HTML = `<!DOCTYPE html>
     .form-success__title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); margin-bottom: 0.75rem; }
     .form-success__body { color: var(--text-muted); }
 
-    /* ══════════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════════ */
+    /* ── FOOTER ── */
     footer { background: var(--surface); border-top: 1px solid var(--divider); padding-block: 4rem; }
     .footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
     @media (max-width: 768px) { .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; } }
-    .footer__brand { font-family: var(--font-display); font-weight: 900; font-size: var(--text-xl); letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .footer__brand span { color: var(--primary); }
+    .footer__logo { height: 48px; width: auto; margin-bottom: 1rem; }
     .footer__tagline { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.65; max-width: 34ch; }
     .footer__col-title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 1.25rem; }
     .footer__links { display: flex; flex-direction: column; gap: 0.75rem; list-style: none; }
@@ -379,13 +365,7 @@ const HTML = `<!DOCTYPE html>
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav__inner">
     <a href="#" class="nav__logo" aria-label="Plus3 Solutions home">
-      <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <rect width="36" height="36" rx="8" fill="var(--primary)"/>
-        <path d="M10 12h7c2.76 0 5 2.24 5 5s-2.24 5-5 5h-3v4H10V12z" fill="white"/>
-        <path d="M14 16v4h3c1.1 0 2-.9 2-2s-.9-2-2-2h-3z" fill="var(--primary)"/>
-        <text x="24" y="27" font-family="sans-serif" font-weight="900" font-size="10" fill="white">3</text>
-      </svg>
-      <span class="nav__logo-text">Plus<span>3</span></span>
+      <img src="${LOGO_URL}" alt="Plus3 Solutions" class="nav__logo-img" style="height:44px;width:auto;object-fit:contain;">
     </a>
     <ul class="nav__links" role="list">
       <li><a href="#about">About</a></li>
@@ -484,7 +464,7 @@ const HTML = `<!DOCTYPE html>
         </div>
         <div class="reveal-up">
           <div class="about__visual">
-            <div class="about__visual-num" aria-hidden="true">P3</div>
+            <img src="${LOGO_URL}" alt="Plus3 Solutions logo" class="about__logo">
             <div class="about__visual-title">Your partner in technology transformation</div>
             <div class="about__visual-sub">Work Central &mdash; Office Space, Bel Air Shopping Centre, Bellairs Dr, Northriding, Johannesburg, 2169</div>
             <div class="about__values">
@@ -665,7 +645,7 @@ const HTML = `<!DOCTYPE html>
   <div class="container">
     <div class="footer__inner">
       <div>
-        <div class="footer__brand">Plus<span>3</span> Solutions</div>
+        <img src="${LOGO_URL}" alt="Plus3 Solutions" class="footer__logo">
         <p class="footer__tagline">Professional technology services built on 15 years of international experience. We partner with your business to transform vision into reality.</p>
       </div>
       <div>
@@ -696,7 +676,6 @@ const HTML = `<!DOCTYPE html>
 </footer>
 
 <script>
-// Auto year — always present, auto-refreshes at midnight
 (function(){
   function setYear(){ var el=document.getElementById('footer-year'); if(el) el.textContent=new Date().getFullYear(); }
   setYear();
@@ -706,8 +685,6 @@ const HTML = `<!DOCTYPE html>
   }
   scheduleMidnight();
 })();
-
-// Mobile nav
 (function(){
   var btn=document.getElementById('hamburger'), nav=document.getElementById('mobile-nav');
   if(!btn||!nav) return;
@@ -724,40 +701,28 @@ const HTML = `<!DOCTYPE html>
   btn.addEventListener('click',toggle);
   document.querySelectorAll('.mobile-link').forEach(function(l){ l.addEventListener('click',function(){ if(open) toggle(); }); });
 })();
-
-// Nav scroll shadow
 (function(){
   var nav=document.querySelector('.nav');
   if(!nav) return;
   function u(){ nav.classList.toggle('scrolled',window.scrollY>20); }
   window.addEventListener('scroll',u,{passive:true}); u();
 })();
-
-// Contact form — POSTs to /api/contact on the Worker
 (function(){
   var form=document.getElementById('contact-form'), success=document.getElementById('form-success');
   if(!form||!success) return;
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var data={
-      first_name:form.first_name.value, last_name:form.last_name.value,
-      email:form.email.value, company:form.company.value,
-      service:form.service.value, message:form.message.value
-    };
+    var data={first_name:form.first_name.value,last_name:form.last_name.value,email:form.email.value,company:form.company.value,service:form.service.value,message:form.message.value};
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){ return r.json(); })
-      .then(function(r){
-        if(r.ok){ form.style.display='none'; success.classList.add('show'); }
-        else { alert('Something went wrong. Please email us directly at info@plus3.co.za'); }
-      })
-      .catch(function(){ alert('Network error. Please email us at info@plus3.co.za'); });
+      .then(function(r){return r.json();})
+      .then(function(r){if(r.ok){form.style.display='none';success.classList.add('show');}else{alert('Something went wrong. Please email us at info@plus3.co.za');}  })
+      .catch(function(){alert('Network error. Please email us at info@plus3.co.za');});
   });
 })();
 </script>
 </body>
 </html>`;
 
-// Security & cache headers
 const HEADERS = {
   'Content-Type': 'text/html; charset=UTF-8',
   'X-Content-Type-Options': 'nosniff',
@@ -770,7 +735,7 @@ const HEADERS = {
     "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
     "font-src https://api.fontshare.com https://cdn.fontshare.com",
     "connect-src 'self'",
-    "img-src 'self' data:",
+    "img-src 'self' data: https://raw.githubusercontent.com",
     "frame-ancestors 'none'"
   ].join('; '),
   'Cache-Control': 'public, max-age=3600, must-revalidate',
@@ -779,64 +744,25 @@ const HEADERS = {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-
-    // CORS preflight
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders() });
-    }
-
-    // Contact form API endpoint
+    if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders() });
     if (url.pathname === '/api/contact' && request.method === 'POST') {
       try {
         const body = await request.json();
         const { first_name, last_name, email, message } = body;
-        if (!first_name || !last_name || !email || !message) {
-          return jsonResponse({ error: 'Required fields missing.' }, 400);
-        }
-        // Uncomment to enable MailChannels email delivery (free on Cloudflare Workers):
-        // await fetch('https://api.mailchannels.net/tx/v1/send', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({
-        //     personalizations: [{ to: [{ email: 'info@plus3.co.za', name: 'Plus3 Solutions' }] }],
-        //     from: { email: 'noreply@plus3.co.za', name: 'Plus3 Website' },
-        //     reply_to: { email, name: first_name + ' ' + last_name },
-        //     subject: 'New website enquiry from ' + first_name + ' ' + last_name,
-        //     content: [{ type: 'text/plain', value:
-        //       'Name: ' + first_name + ' ' + last_name + '\n' +
-        //       'Email: ' + email + '\n' +
-        //       'Company: ' + (body.company || '—') + '\n' +
-        //       'Service: ' + (body.service || '—') + '\n\n' +
-        //       'Message:\n' + body.message
-        //     }]
-        //   })
-        // });
+        if (!first_name || !last_name || !email || !message) return jsonResponse({ error: 'Required fields missing.' }, 400);
         return jsonResponse({ ok: true }, 200);
       } catch (err) {
         return jsonResponse({ error: 'Server error.' }, 500);
       }
     }
-
-    // Serve HTML for all GET requests (SPA — single file, no routing needed)
-    if (request.method === 'GET') {
-      return new Response(HTML, { headers: HEADERS });
-    }
-
+    if (request.method === 'GET') return new Response(HTML, { headers: HEADERS });
     return new Response('Method Not Allowed', { status: 405 });
   }
 };
 
 function jsonResponse(data, status) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 }
-
 function corsHeaders() {
-  return {
-    'Access-Control-Allow-Origin': 'https://plus3.co.za',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
+  return { 'Access-Control-Allow-Origin': 'https://plus3.co.za', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' };
 }
