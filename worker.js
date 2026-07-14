@@ -305,11 +305,26 @@ const HTML = `<!DOCTYPE html>
       padding-top: var(--nav-height);
       position: relative;
       overflow: hidden;
+      /* Desktop: no bg needed, image is in the right column */
     }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        /* Mobile: show bg image behind the entire hero */
+        background-image: url('${HERO_BG_URL}');
+        background-size: cover;
+        background-position: center;
+      }
+    }
     .hero__left {
       padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 5vw, 4rem);
       position: relative; z-index: 2;
+    }
+    /* Mobile overlay so text stays readable over the bg image */
+    @media (max-width: 900px) {
+      .hero__left {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.65) 100%);
+      }
     }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 0.6rem;
