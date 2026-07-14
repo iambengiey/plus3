@@ -1154,7 +1154,7 @@ const HEADERS = {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src https://fonts.gstatic.com",
     "connect-src 'self'",
-    "img-src 'self' data: https://raw.githubusercontent.com",
+    "img-src 'self' data: https://raw.githubusercontent.com https://objects.githubusercontent.com https://camo.githubusercontent.com",
     "frame-ancestors 'none'"
   ].join('; '),
   'Cache-Control': 'public, max-age=3600, must-revalidate',
