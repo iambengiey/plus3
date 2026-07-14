@@ -5,16 +5,24 @@
 const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
 const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/PLUS%203%20long%20WHITE%20AND%20GREEN.png';
 const HERO_BG_URL    = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/bg.png';
-const CLIENT_IMGS    = [
-  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%201.avif',
-  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%202.avif',
-  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%203.avif',
-  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%204.avif',
-  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%205.avif',
-  'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Image%206.avif',
+
+// All partner / client logos from website/Logos/
+const PARTNER_LOGOS = [
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Absa%20Logo.webp',           alt: 'Absa' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Capitec%20logo.png',         alt: 'Capitec' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/DKMS_Logo.webp',             alt: 'DKMS' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Eurolab-Logo-white.png',     alt: 'Eurolab' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Mediclinic.jpg',             alt: 'Mediclinic' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Mercedes-Benz-Logo.png',     alt: 'Mercedes-Benz' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Singular%20logo.webp',       alt: 'Singular' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Standard%20bank%20logo.png', alt: 'Standard Bank' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tetrad_group_logo.jpg',      alt: 'Tetrad Group' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tiltecx_logo.jpg',           alt: 'Tiltecx' },
 ];
-const CAROUSEL_IMGS = [...CLIENT_IMGS, ...CLIENT_IMGS]
-  .map(u => `<img src="${u}" alt="Plus3 client" class="client-logo" loading="lazy">`)
+
+// Double for seamless infinite scroll
+const CAROUSEL_IMGS = [...PARTNER_LOGOS, ...PARTNER_LOGOS]
+  .map(({ src, alt }) => `<img src="${src}" alt="${alt}" class="client-logo" loading="lazy">`)
   .join('');
 
 const SCHEMA = JSON.stringify({
@@ -413,13 +421,6 @@ const HTML = `<!DOCTYPE html>
     .about__pillar-body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
 
     /* ── ANDREW ── */
-    .andrew__grid {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: clamp(3rem, 5vw, 5rem);
-      align-items: start;
-    }
-    @media (max-width: 768px) { .andrew__grid { grid-template-columns: 1fr; } }
     .andrew__img-wrap {
       position: relative;
       border-radius: var(--radius-lg);
@@ -429,16 +430,8 @@ const HTML = `<!DOCTYPE html>
       background: var(--dark-card);
       display: flex; align-items: center; justify-content: center;
     }
-    .andrew__img-placeholder {
-      font-size: 5rem;
-      opacity: 0.15;
-    }
-    .andrew__img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(20%);
-      display: block;
-    }
+    .andrew__img-placeholder { font-size: 5rem; opacity: 0.15; }
+    .andrew__img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); display: block; }
     .andrew__label {
       font-size: var(--text-xs); font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.12em;
@@ -451,40 +444,16 @@ const HTML = `<!DOCTYPE html>
       color: var(--offwhite);
       margin-bottom: 0.35rem;
     }
-    .andrew__title {
-      font-size: var(--text-sm);
-      color: var(--green-light);
-      font-weight: 600;
-      margin-bottom: 1.75rem;
-    }
-    .andrew__bio {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: var(--text-sm);
-      margin-bottom: 1.25rem;
-    }
+    .andrew__title { font-size: var(--text-sm); color: var(--green-light); font-weight: 600; margin-bottom: 1.75rem; }
+    .andrew__bio { color: var(--muted); line-height: 1.8; font-size: var(--text-sm); margin-bottom: 1.25rem; }
     .andrew__quote {
       border-left: 3px solid var(--green);
-      padding: 1rem 1.5rem;
-      margin-top: 2rem;
+      padding: 1rem 1.5rem; margin-top: 2rem;
       background: rgba(34,139,34,0.06);
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
     }
-    .andrew__quote p {
-      font-style: italic;
-      color: var(--offwhite);
-      line-height: 1.7;
-      font-size: var(--text-sm);
-      margin-bottom: 0.5rem;
-    }
-    .andrew__quote cite {
-      font-size: var(--text-xs);
-      color: var(--green-light);
-      font-style: normal;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+    .andrew__quote p { font-style: italic; color: var(--offwhite); line-height: 1.7; font-size: var(--text-sm); margin-bottom: 0.5rem; }
+    .andrew__quote cite { font-size: var(--text-xs); color: var(--green-light); font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
 
     /* ── SERVICES ── */
     .services__grid {
@@ -501,31 +470,13 @@ const HTML = `<!DOCTYPE html>
     .service-card {
       background: var(--dark-card);
       padding: 2.25rem 2rem;
-      position: relative;
       transition: background var(--t-fast);
     }
     .service-card:hover { background: #131813; }
-    .service-card__num {
-      font-family: var(--font-display);
-      font-size: var(--text-xs);
-      font-weight: 900;
-      color: var(--green);
-      opacity: 0.6;
-      margin-bottom: 1.25rem;
-    }
-    .service-card__title {
-      font-family: var(--font-display);
-      font-size: var(--text-base);
-      font-weight: 700;
-      color: var(--offwhite);
-      margin-bottom: 0.75rem;
-    }
+    .service-card__num { font-family: var(--font-display); font-size: var(--text-xs); font-weight: 900; color: var(--green); opacity: 0.6; margin-bottom: 1.25rem; }
+    .service-card__title { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--offwhite); margin-bottom: 0.75rem; }
     .service-card:hover .service-card__title { color: var(--green-light); }
-    .service-card__body {
-      font-size: var(--text-sm);
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .service-card__body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
 
     /* ── WHY PLUS3 ── */
     .why__grid {
@@ -535,18 +486,9 @@ const HTML = `<!DOCTYPE html>
       align-items: center;
     }
     @media (max-width: 768px) { .why__grid { grid-template-columns: 1fr; } }
-    .why__visual {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      border: 1px solid var(--dark-border);
-    }
+    .why__visual { position: relative; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--dark-border); }
     .why__visual img { width: 100%; display: block; filter: grayscale(20%) brightness(0.8); }
-    .why__visual::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(34,139,34,0.25) 0%, transparent 60%);
-    }
+    .why__visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(34,139,34,0.25) 0%, transparent 60%); }
     .why__points { display: flex; flex-direction: column; gap: 2rem; }
     .why__point { display: flex; gap: 1.25rem; align-items: flex-start; }
     .why__point-icon {
@@ -576,25 +518,9 @@ const HTML = `<!DOCTYPE html>
       transition: border-color var(--t-fast), transform var(--t-slow) var(--ease-out);
     }
     .model-card:hover { border-color: rgba(34,139,34,0.4); transform: translateY(-3px); }
-    .model-card__num {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem,4vw,3.5rem);
-      font-weight: 900;
-      color: rgba(34,139,34,0.15);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .model-card__title {
-      font-size: var(--text-sm);
-      font-weight: 700;
-      color: var(--green-hi);
-      margin-bottom: 0.75rem;
-    }
-    .model-card__body {
-      font-size: var(--text-sm);
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .model-card__num { font-family: var(--font-display); font-size: clamp(2.5rem,4vw,3.5rem); font-weight: 900; color: rgba(34,139,34,0.15); line-height: 1; margin-bottom: 1rem; }
+    .model-card__title { font-size: var(--text-sm); font-weight: 700; color: var(--green-hi); margin-bottom: 0.75rem; }
+    .model-card__body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
 
     /* ── CLIENTS CAROUSEL ── */
     .clients-section {
@@ -609,19 +535,21 @@ const HTML = `<!DOCTYPE html>
     .clients-carousel::before { left: 0; background: linear-gradient(to right, var(--dark-surface), transparent); }
     .clients-carousel::after  { right: 0; background: linear-gradient(to left,  var(--dark-surface), transparent); }
     .clients-track {
-      display: flex; align-items: center; gap: 4rem;
-      animation: client-scroll 30s linear infinite;
+      display: flex; align-items: center; gap: 5rem;
+      animation: client-scroll 35s linear infinite;
       width: max-content;
     }
     .clients-track:hover { animation-play-state: paused; }
     @keyframes client-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .client-logo {
-      height: 64px; width: auto; max-width: 140px;
+      height: 52px; width: auto; max-width: 160px;
       object-fit: contain; flex-shrink: 0;
-      opacity: 0.55; filter: grayscale(40%) brightness(1.2);
-      transition: opacity var(--t-fast), filter var(--t-fast), transform var(--t-fast);
+      /* Make all logos appear white/light on the dark background */
+      filter: brightness(0) invert(1);
+      opacity: 0.55;
+      transition: opacity var(--t-fast), transform var(--t-fast);
     }
-    .client-logo:hover { opacity: 1; filter: grayscale(0%) brightness(1); transform: scale(1.05); }
+    .client-logo:hover { opacity: 1; transform: scale(1.06); }
 
     /* ── CTA BAND ── */
     .cta-band {
@@ -638,21 +566,8 @@ const HTML = `<!DOCTYPE html>
       background-size: 48px 48px;
     }
     .cta-band__inner { position: relative; z-index: 1; text-align: center; }
-    .cta-band__heading {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .cta-band__sub {
-      color: rgba(255,255,255,0.75);
-      font-size: var(--text-base);
-      margin-bottom: 2.5rem;
-      max-width: 48ch;
-      margin-inline: auto;
-    }
+    .cta-band__heading { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cta-band__sub { color: rgba(255,255,255,0.75); font-size: var(--text-base); margin-bottom: 2.5rem; max-width: 48ch; margin-inline: auto; }
     .cta-band__btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn--white { background: #fff; color: var(--green); border: 2px solid #fff; }
     .btn--white:hover { background: rgba(255,255,255,0.9); }
@@ -754,13 +669,7 @@ const HTML = `<!DOCTYPE html>
     @media (max-width: 768px) { .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; } }
     .footer__logo { height: 40px; width: auto; margin-bottom: 1.25rem; }
     .footer__tagline { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; max-width: 32ch; }
-    .footer__col-title {
-      font-family: var(--font-body);
-      font-weight: 700; font-size: var(--text-xs);
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: rgba(152,163,153,0.5);
-      margin-bottom: 1.25rem;
-    }
+    .footer__col-title { font-family: var(--font-body); font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: rgba(152,163,153,0.5); margin-bottom: 1.25rem; }
     .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
     .footer__links a { font-size: var(--text-sm); color: var(--muted); }
     .footer__links a:hover { color: var(--offwhite); }
@@ -890,22 +799,17 @@ const HTML = `<!DOCTYPE html>
           </div>
         </div>
         <div>
-          <!-- ANDREW -->
-          <div class="andrew__grid" style="grid-template-columns:1fr;">
-            <div class="andrew__img-wrap">
-              <div class="andrew__img-placeholder" aria-hidden="true">👤</div>
-            </div>
-            <div style="margin-top:2rem;">
-              <div class="andrew__label">Leadership</div>
-              <div class="andrew__name">Andrew Essey</div>
-              <div class="andrew__title">Founder</div>
-              <p class="andrew__bio">Andrew started in mergers and acquisitions, followed by 10 years of financial and project consulting across the UK and Europe. A member of the Chartered Institute of Management Accountants, he has held senior roles at global organisations including ING, Wells Fargo and JP Morgan.</p>
-              <p class="andrew__bio">Back in South Africa, he spent five-plus years as a senior business head at a major software company before founding Plus3.</p>
-              <div class="andrew__quote">
-                <p>&ldquo;We don&rsquo;t sell solutions. We build the right ones.&rdquo;</p>
-                <cite>Andrew Essey &mdash; Founder, Plus3</cite>
-              </div>
-            </div>
+          <div class="andrew__img-wrap" style="margin-bottom:2rem;">
+            <div class="andrew__img-placeholder" aria-hidden="true">&#128100;</div>
+          </div>
+          <div class="andrew__label">Leadership</div>
+          <div class="andrew__name">Andrew Essey</div>
+          <div class="andrew__title">Founder</div>
+          <p class="andrew__bio">Andrew started in mergers and acquisitions, followed by 10 years of financial and project consulting across the UK and Europe. A member of the Chartered Institute of Management Accountants, he has held senior roles at global organisations including ING, Wells Fargo and JP Morgan.</p>
+          <p class="andrew__bio">Back in South Africa, he spent five-plus years as a senior business head at a major software company before founding Plus3.</p>
+          <div class="andrew__quote">
+            <p>&ldquo;We don&rsquo;t sell solutions. We build the right ones.&rdquo;</p>
+            <cite>Andrew Essey &mdash; Founder, Plus3</cite>
           </div>
         </div>
       </div>
@@ -1035,7 +939,7 @@ const HTML = `<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- CLIENTS -->
+  <!-- CLIENTS CAROUSEL -->
   <section class="clients-section" aria-labelledby="clients-h">
     <div class="container">
       <div class="green-bar" aria-hidden="true"></div>
@@ -1197,18 +1101,15 @@ const HTML = `<!DOCTYPE html>
 
 <script>
 (function(){
-  // Footer year
   var el=document.getElementById('footer-year');
   if(el) el.textContent=new Date().getFullYear();
 
-  // Nav scroll
   var nav=document.querySelector('.nav');
   if(nav){
     function u(){ nav.classList.toggle('scrolled',window.scrollY>20); }
     window.addEventListener('scroll',u,{passive:true}); u();
   }
 
-  // Hamburger
   var btn=document.getElementById('hamburger'),mn=document.getElementById('mobile-nav');
   if(btn&&mn){
     var open=false;
@@ -1225,7 +1126,6 @@ const HTML = `<!DOCTYPE html>
     document.querySelectorAll('.mobile-link').forEach(function(l){ l.addEventListener('click',function(){ if(open) toggle(); }); });
   }
 
-  // Contact form
   var form=document.getElementById('contact-form'),success=document.getElementById('form-success');
   if(form&&success){
     form.addEventListener('submit',function(e){
