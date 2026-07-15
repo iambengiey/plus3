@@ -293,6 +293,15 @@ const HTML = `<!DOCTYPE html>
     }
 
     /* ── HERO ── */
+    /*
+     * Desktop: left content scrolls normally; right half holds a FIXED image
+     * that never moves. We achieve this by making .hero__right position:fixed
+     * on the right 50% of the viewport, behind the nav (z-index:1).
+     * The hero section itself is min-height:100dvh so it occupies enough
+     * space before the fixed image disappears behind the next section.
+     * Mobile: single-column with background-attachment:fixed so the image
+     * is also pinned on smaller screens.
+     */
     .hero {
       min-height: 100dvh;
       display: grid;
@@ -300,14 +309,15 @@ const HTML = `<!DOCTYPE html>
       align-items: center;
       padding-top: var(--nav-height);
       position: relative;
-      overflow: hidden;
     }
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
+        min-height: 100dvh;
         background-image: url('${HERO_BG_URL}');
         background-size: cover;
-        background-position: center;
+        background-position: center top;
+        background-attachment: fixed;
       }
     }
     .hero__left {
@@ -350,11 +360,17 @@ const HTML = `<!DOCTYPE html>
       font-style: italic;
       letter-spacing: 0.05em;
     }
+
+    /* Fixed right-half image panel — stays put while page scrolls */
     .hero__right {
-      position: relative;
-      height: 100%;
-      min-height: 100dvh;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100vh;
+      z-index: 1;
       overflow: hidden;
+      pointer-events: none;
     }
     @media (max-width: 900px) { .hero__right { display: none; } }
     .hero__right img {
@@ -375,6 +391,7 @@ const HTML = `<!DOCTYPE html>
       border-top: 1px solid var(--dark-border);
       border-bottom: 1px solid var(--dark-border);
       padding-block: 2.5rem;
+      position: relative; z-index: 10;
     }
     .stats-band__inner {
       display: flex; flex-wrap: wrap;
@@ -401,6 +418,12 @@ const HTML = `<!DOCTYPE html>
       background: var(--dark-border);
     }
     @media (max-width: 640px) { .stats-band__divider { display: none; } }
+
+    /* All sections after hero must sit above the fixed image */
+    .section, .clients-section, .cta-band, footer {
+      position: relative;
+      z-index: 10;
+    }
 
     /* ── ABOUT ── */
     .about__grid {
