@@ -1,7 +1,3 @@
-// ============================================================
-// Plus3 Solutions — Cloudflare Worker
-// ============================================================
-
 const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
 const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/PLUS%203%20long%20WHITE%20AND%20GREEN.png';
 const HERO_BG_URL    = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/bg.png';
