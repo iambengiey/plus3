@@ -25,7 +25,7 @@ const SCHEMA = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Plus3 Solutions",
-  "url": "https://plus3.co.za",
+  "url": "https://www.plus3.co.za",
   "logo.png": "https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png",
   "description": "Plus3 is a modern technology partner delivering consulting, custom software development, team augmentation, cloud & DevOps, quality assurance and delivery enablement services across South Africa.",
   "telephone": ["+27822635227", "+27689397311"],
@@ -69,13 +69,13 @@ const HTML = `<!DOCTYPE html>
   <meta name="keywords" content="technology consulting South Africa, custom software development Johannesburg, team augmentation, staff augmentation, DevOps South Africa, cloud consulting, software outsourcing South Africa, Plus3, IT consulting Johannesburg">
   <meta name="author" content="Plus3 Solutions">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://plus3.co.za">
-  <link rel="alternate" hreflang="en-za" href="https://plus3.co.za">
-  <link rel="alternate" hreflang="en" href="https://plus3.co.za">
+  <link rel="canonical" href="https://www.plus3.co.za">
+  <link rel="alternate" hreflang="en-za" href="https://www.plus3.co.za">
+  <link rel="alternate" hreflang="en" href="https://www.plus3.co.za">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://plus3.co.za">
+  <meta property="og:url" content="https://www.plus3.co.za">
   <meta property="og:title" content="Plus3 Solutions | Tech Talent to Bring Your Ideas to Life">
   <meta property="og:description" content="Modern technology partner. Consulting, custom software, team augmentation, cloud & DevOps, QA and delivery enablement — built on 15+ years of international experience.">
   <meta property="og:image" content="${HERO_BG_URL}">
@@ -1066,5 +1066,5 @@ function jsonResponse(data, status) {
   return new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 }
 function corsHeaders() {
-  return { 'Access-Control-Allow-Origin': 'https://plus3.co.za', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' };
+  return { 'Access-Control-Allow-Origin': 'https://www.plus3.co.za', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' };
 }
