@@ -9,12 +9,12 @@ const PARTNER_LOGOS = [
   { src: CDN + '/website/Logos/capitec_logo.png',         alt: 'Capitec' },
   { src: CDN + '/website/Logos/dkms_logo.webp',           alt: 'DKMS' },
   { src: CDN + '/website/Logos/eurolab_logo_white.png',   alt: 'Eurolab' },
-  { src: CDN + '/website/Logos/mediclinic.jpg',           alt: 'Mediclinic' },
+  { src: CDN + '/website/Logos/mediclinic.png',           alt: 'Mediclinic' },
   { src: CDN + '/website/Logos/mercedes_benz_logo.png',   alt: 'Mercedes-Benz' },
   { src: CDN + '/website/Logos/singular_logo.webp',       alt: 'Singular' },
   { src: CDN + '/website/Logos/standard_bank_logo.png',   alt: 'Standard Bank' },
-  { src: CDN + '/website/Logos/tetrad_group_logo.jpg',    alt: 'Tetrad Group' },
-  { src: CDN + '/website/Logos/tiltecx_logo.jpg',         alt: 'Tiltecx' },
+  { src: CDN + '/website/Logos/tetrad_group_logo.png',    alt: 'Tetrad Group' },
+  { src: CDN + '/website/Logos/tiltecx_logo.png',         alt: 'Tiltecx' },
 ];
 
 // Double for seamless infinite scroll
