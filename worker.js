@@ -1,19 +1,20 @@
-const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png';
-const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png';
-const HERO_BG_URL    = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/bg.png';
+const CDN            = 'https://cdn.jsdelivr.net/gh/iambengiey/plus3@main';
+const LOGO_URL       = CDN + '/website/logo.png';
+const LOGO_WHITE_URL = CDN + '/website/logo.png';
+const HERO_BG_URL    = CDN + '/website/bg.png';
 
 // All partner / client logos from website/Logos/
 const PARTNER_LOGOS = [
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/absa_logo.webp',           alt: 'Absa' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/capitec_logo.png',         alt: 'Capitec' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/dkms_logo.webp',           alt: 'DKMS' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/eurolab_logo_white.png',   alt: 'Eurolab' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/mediclinic.jpg',           alt: 'Mediclinic' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/mercedes_benz_logo.png',   alt: 'Mercedes-Benz' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/singular_logo.webp',       alt: 'Singular' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/standard_bank_logo.png',   alt: 'Standard Bank' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tetrad_group_logo.jpg',    alt: 'Tetrad Group' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tiltecx_logo.jpg',         alt: 'Tiltecx' },
+  { src: CDN + '/website/Logos/absa_logo.webp',           alt: 'Absa' },
+  { src: CDN + '/website/Logos/capitec_logo.png',         alt: 'Capitec' },
+  { src: CDN + '/website/Logos/dkms_logo.webp',           alt: 'DKMS' },
+  { src: CDN + '/website/Logos/eurolab_logo_white.png',   alt: 'Eurolab' },
+  { src: CDN + '/website/Logos/mediclinic.jpg',           alt: 'Mediclinic' },
+  { src: CDN + '/website/Logos/mercedes_benz_logo.png',   alt: 'Mercedes-Benz' },
+  { src: CDN + '/website/Logos/singular_logo.webp',       alt: 'Singular' },
+  { src: CDN + '/website/Logos/standard_bank_logo.png',   alt: 'Standard Bank' },
+  { src: CDN + '/website/Logos/tetrad_group_logo.jpg',    alt: 'Tetrad Group' },
+  { src: CDN + '/website/Logos/tiltecx_logo.jpg',         alt: 'Tiltecx' },
 ];
 
 // Double for seamless infinite scroll
@@ -26,7 +27,7 @@ const SCHEMA = JSON.stringify({
   "@type": "ProfessionalService",
   "name": "Plus3 Solutions",
   "url": "https://www.plus3.co.za",
-  "logo.png": "https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png",
+  "logo": CDN + "/website/logo.png",
   "description": "Plus3 is a modern technology partner delivering consulting, custom software development, team augmentation, cloud & DevOps, quality assurance and delivery enablement services across South Africa.",
   "telephone": ["+27822635227", "+27689397311"],
   "email": "info@plus3.co.za",
@@ -65,7 +66,7 @@ const HTML = `<!DOCTYPE html>
 
   <!-- Primary SEO -->
   <title>Plus3 Solutions | Tech Talent to Bring Your Ideas to Life</title>
-  <meta name="description" content="Plus3 is a modern technology partner built on its founder's 15+ years of international consulting experience. We deliver custom software, team augmentation, consulting, cloud & DevOps, QA and delivery enablement across South Africa.">
+  <meta name="description" content="Plus3 is a modern technology partner built on its founder's 15+ years of international consulting experience. We deliver custom software, team augmentation, consulting, cloud &amp; DevOps, QA and delivery enablement across South Africa.">
   <meta name="keywords" content="technology consulting South Africa, custom software development Johannesburg, team augmentation, staff augmentation, DevOps South Africa, cloud consulting, software outsourcing South Africa, Plus3, IT consulting Johannesburg">
   <meta name="author" content="Plus3 Solutions">
   <meta name="robots" content="index, follow">
@@ -77,7 +78,7 @@ const HTML = `<!DOCTYPE html>
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.plus3.co.za">
   <meta property="og:title" content="Plus3 Solutions | Tech Talent to Bring Your Ideas to Life">
-  <meta property="og:description" content="Modern technology partner. Consulting, custom software, team augmentation, cloud & DevOps, QA and delivery enablement. Built on 15+ years of international experience.">
+  <meta property="og:description" content="Modern technology partner. Consulting, custom software, team augmentation, cloud &amp; DevOps, QA and delivery enablement. Built on 15+ years of international experience.">
   <meta property="og:image" content="${HERO_BG_URL}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -293,15 +294,6 @@ const HTML = `<!DOCTYPE html>
     }
 
     /* ── HERO ── */
-    /*
-     * Desktop: left content scrolls normally; right half holds a FIXED image
-     * that never moves. We achieve this by making .hero__right position:fixed
-     * on the right 50% of the viewport, behind the nav (z-index:1).
-     * The hero section itself is min-height:100dvh so it occupies enough
-     * space before the fixed image disappears behind the next section.
-     * Mobile: single-column with background-attachment:fixed so the image
-     * is also pinned on smaller screens.
-     */
     .hero {
       min-height: 100dvh;
       display: grid;
@@ -317,7 +309,7 @@ const HTML = `<!DOCTYPE html>
         background-image: url('${HERO_BG_URL}');
         background-size: cover;
         background-position: center top;
-        background-attachment: fixed;
+        background-attachment: scroll;
       }
     }
     .hero__left {
@@ -361,13 +353,11 @@ const HTML = `<!DOCTYPE html>
       letter-spacing: 0.05em;
     }
 
-    /* Fixed right-half image panel — stays put while page scrolls */
+    /* Fixed right-half image panel — desktop only */
     .hero__right {
       position: fixed;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100vh;
+      top: 0; right: 0;
+      width: 50%; height: 100vh;
       z-index: 1;
       overflow: hidden;
       pointer-events: none;
@@ -794,7 +784,7 @@ const HTML = `<!DOCTYPE html>
           <p class="about__body">Our network of joint ventures, partners and specialists works alongside your teams across custom development, analysis and quality assurance. Turning your vision into reality.</p>
           <div class="about__pillars">
             <div class="about__pillar"><div class="about__pillar-num">01</div><div><div class="about__pillar-title">Outcome-Focused</div><div class="about__pillar-body">We measure success by the results we create for your business. The focus is on real outcomes, not feature counts or hours billed.</div></div></div>
-            <div class="about__pillar"><div class="about__pillar-num">02</div><div><div class="about__pillar-title">Relationship-Driven</div><div class="about__pillar-body">We're a realtionship-driven professional services partner. We understand that every business is unique, with its own set of needs and goals. Built on trust, we take the time to understand each unique business and tailor custom outsoucring solutions to fit.</div></div></div>
+            <div class="about__pillar"><div class="about__pillar-num">02</div><div><div class="about__pillar-title">Relationship-Driven</div><div class="about__pillar-body">We're a relationship-driven professional services partner. We understand that every business is unique, with its own set of needs and goals. Built on trust, we take the time to understand each unique business and tailor custom outsourcing solutions to fit.</div></div></div>
             <div class="about__pillar"><div class="about__pillar-num">03</div><div><div class="about__pillar-title">Senior, Yet Practical</div><div class="about__pillar-body">Paired with delivery models that work within real budgets, timelines and constraints, our network of skilled experts collaborate closely with you and your teams to ensure your vision becomes a reality.</div></div></div>
           </div>
         </div>
@@ -1061,7 +1051,7 @@ const HEADERS = {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src https://fonts.gstatic.com",
     "connect-src 'self'",
-    "img-src 'self' data: https://raw.githubusercontent.com https://objects.githubusercontent.com https://camo.githubusercontent.com",
+    "img-src 'self' data: https://cdn.jsdelivr.net",
     "frame-ancestors 'none'"
   ].join('; '),
   'Cache-Control': 'public, max-age=3600, must-revalidate',
