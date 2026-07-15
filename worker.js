@@ -1,5 +1,5 @@
-const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo';
-const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo';
+const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png';
+const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png';
 const HERO_BG_URL    = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/bg.png';
 
 // All partner / client logos from website/Logos/
