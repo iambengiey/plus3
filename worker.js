@@ -1,19 +1,23 @@
+// ============================================================
+// Plus3 Solutions — Cloudflare Worker
+// ============================================================
+
 const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
 const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/PLUS%203%20long%20WHITE%20AND%20GREEN.png';
 const HERO_BG_URL    = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/bg.png';
 
 // All partner / client logos from website/Logos/
 const PARTNER_LOGOS = [
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Absa%20Logo.webp',           alt: 'Absa' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Capitec%20logo.png',         alt: 'Capitec' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/DKMS_Logo.webp',             alt: 'DKMS' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Eurolab-Logo-white.png',     alt: 'Eurolab' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Mediclinic.jpg',             alt: 'Mediclinic' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Mercedes-Benz-Logo.png',     alt: 'Mercedes-Benz' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Singular%20logo.webp',       alt: 'Singular' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/Standard%20bank%20logo.png', alt: 'Standard Bank' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tetrad_group_logo.jpg',      alt: 'Tetrad Group' },
-  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tiltecx_logo.jpg',           alt: 'Tiltecx' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/absa_logo.webp',           alt: 'Absa' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/capitec_logo.png',         alt: 'Capitec' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/dkms_logo.webp',           alt: 'DKMS' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/eurolab_logo_white.png',   alt: 'Eurolab' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/mediclinic.jpg',           alt: 'Mediclinic' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/mercedes_benz_logo.png',   alt: 'Mercedes-Benz' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/singular_logo.webp',       alt: 'Singular' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/standard_bank_logo.png',   alt: 'Standard Bank' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tetrad_group_logo.jpg',    alt: 'Tetrad Group' },
+  { src: 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/Logos/tiltecx_logo.jpg',         alt: 'Tiltecx' },
 ];
 
 // Double for seamless infinite scroll
