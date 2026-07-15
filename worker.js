@@ -26,7 +26,7 @@ const SCHEMA = JSON.stringify({
   "@type": "ProfessionalService",
   "name": "Plus3 Solutions",
   "url": "https://plus3.co.za",
-  "logo": "https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo",
+  "logo.png": "https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo.png",
   "description": "Plus3 is a modern technology partner delivering consulting, custom software development, team augmentation, cloud & DevOps, quality assurance and delivery enablement services across South Africa.",
   "telephone": ["+27822635227", "+27689397311"],
   "email": "info@plus3.co.za",
