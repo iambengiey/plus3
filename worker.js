@@ -1,9 +1,5 @@
-// ============================================================
-// Plus3 Solutions — Cloudflare Worker
-// ============================================================
-
-const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png';
-const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/PLUS%203%20long%20WHITE%20AND%20GREEN.png';
+const LOGO_URL       = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo';
+const LOGO_WHITE_URL = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo';
 const HERO_BG_URL    = 'https://raw.githubusercontent.com/iambengiey/plus3/main/website/bg.png';
 
 // All partner / client logos from website/Logos/
@@ -30,7 +26,7 @@ const SCHEMA = JSON.stringify({
   "@type": "ProfessionalService",
   "name": "Plus3 Solutions",
   "url": "https://plus3.co.za",
-  "logo": "https://raw.githubusercontent.com/iambengiey/plus3/main/website/1.png",
+  "logo": "https://raw.githubusercontent.com/iambengiey/plus3/main/website/logo",
   "description": "Plus3 is a modern technology partner delivering consulting, custom software development, team augmentation, cloud & DevOps, quality assurance and delivery enablement services across South Africa.",
   "telephone": ["+27822635227", "+27689397311"],
   "email": "info@plus3.co.za",
