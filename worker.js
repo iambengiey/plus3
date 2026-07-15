@@ -789,7 +789,7 @@ const HTML = `<!DOCTYPE html>
           </div>
         </div>
         <div>
-          <div class="andrew__img-wrap" style="margin-bottom:2rem;"><div class="andrew__img-placeholder" aria-hidden="true">&#128100;</div></div>
+          <div class="andrew__img-wrap" style="margin-bottom:2rem;"><img src="${CDN}/website/andrew_essey.png" alt="Andrew Essey, Founder of Plus3"></div>
           <div class="andrew__label">Leadership</div>
           <div class="andrew__name">Andrew Essey</div>
           <div class="andrew__title">Founder</div>
@@ -835,7 +835,7 @@ const HTML = `<!DOCTYPE html>
             <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><div class="why__point-title">Built to scale with you</div><div class="why__point-body">Practical, modern solutions engineered to grow with your business from first build to enterprise scale.</div></div></div>
           </div>
         </div>
-        <div class="why__visual"><img src="/website/Image1.png" alt="Plus3 technology" loading="lazy"></div>
+        <div class="why__visual"><img src="${CDN}/website/Image1.png" alt="Plus3 technology" loading="lazy"></div>
       </div>
     </div>
   </section>
