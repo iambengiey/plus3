@@ -32,9 +32,9 @@ const SCHEMA = JSON.stringify({
   "email": "info@plus3.co.za",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Work Central, Bel Air Shopping Centre, Bellairs Dr",
-    "addressLocality": "Northriding, Johannesburg",
-    "postalCode": "2169",
+    "streetAddress": "50 Christo Avenue",
+    "addressLocality": "Olivedale, Johannesburg",
+    "postalCode": "2188",
     "addressCountry": "ZA"
   },
   "areaServed": "ZA",
@@ -65,7 +65,7 @@ const HTML = `<!DOCTYPE html>
 
   <!-- Primary SEO -->
   <title>Plus3 Solutions | Tech Talent to Bring Your Ideas to Life</title>
-  <meta name="description" content="Plus3 is a modern technology partner built on 15+ years of international consulting experience. We deliver custom software, team augmentation, consulting, cloud & DevOps, QA and delivery enablement across South Africa.">
+  <meta name="description" content="Plus3 is a modern technology partner built on its founder's 15+ years of international consulting experience. We deliver custom software, team augmentation, consulting, cloud & DevOps, QA and delivery enablement across South Africa.">
   <meta name="keywords" content="technology consulting South Africa, custom software development Johannesburg, team augmentation, staff augmentation, DevOps South Africa, cloud consulting, software outsourcing South Africa, Plus3, IT consulting Johannesburg">
   <meta name="author" content="Plus3 Solutions">
   <meta name="robots" content="index, follow">
@@ -77,7 +77,7 @@ const HTML = `<!DOCTYPE html>
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.plus3.co.za">
   <meta property="og:title" content="Plus3 Solutions | Tech Talent to Bring Your Ideas to Life">
-  <meta property="og:description" content="Modern technology partner. Consulting, custom software, team augmentation, cloud & DevOps, QA and delivery enablement — built on 15+ years of international experience.">
+  <meta property="og:description" content="Modern technology partner. Consulting, custom software, team augmentation, cloud & DevOps, QA and delivery enablement. Built on 15+ years of international experience.">
   <meta property="og:image" content="${HERO_BG_URL}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -767,12 +767,12 @@ const HTML = `<!DOCTYPE html>
           <div class="green-bar" aria-hidden="true"></div>
           <p class="sec-label">01 &mdash; About Plus3</p>
           <h2 class="sec-heading" id="about-h">Built differently<br>from day one.</h2>
-          <p class="about__body" style="margin-top:1.5rem;">Plus3 is a modern technology partner built on its founder&rsquo;s 15+ years of international consulting experience. We help organisations turn ideas into practical, scalable digital solutions &mdash; leading with outcomes, smarter delivery, better results and partnerships that last.</p>
-          <p class="about__body">We&rsquo;re a relationship-driven professional services partner. We take the time to understand each unique business and tailor custom outsourcing solutions to fit. Our network of joint ventures, partners and specialists works alongside your teams across custom development, analysis and quality assurance &mdash; turning your vision into reality.</p>
+          <p class="about__body" style="margin-top:1.5rem;">Plus3 is a modern technology partner built on its founder&rsquo;s 15+ years of international consulting experience. We help organisations turn ideas into practical, scalable digital solutions. Leading with outcomes, smarter delivery, better results and partnerships that last.</p>
+          <p class="about__body">Our network of joint ventures, partners and specialists works alongside your teams across custom development, analysis and quality assurance. Turning your vision into reality.</p>
           <div class="about__pillars">
-            <div class="about__pillar"><div class="about__pillar-num">01</div><div><div class="about__pillar-title">Outcome-Focused</div><div class="about__pillar-body">We measure success by the results we create for your business &mdash; real outcomes, not feature counts or hours billed.</div></div></div>
-            <div class="about__pillar"><div class="about__pillar-num">02</div><div><div class="about__pillar-title">Relationship-Driven</div><div class="about__pillar-body">Long-term partnerships built on trust and embedded teams that align closely with your stakeholders and goals.</div></div></div>
-            <div class="about__pillar"><div class="about__pillar-num">03</div><div><div class="about__pillar-title">Senior, Yet Practical</div><div class="about__pillar-body">Senior consulting experience paired with delivery models that work within real budgets, timelines and constraints.</div></div></div>
+            <div class="about__pillar"><div class="about__pillar-num">01</div><div><div class="about__pillar-title">Outcome-Focused</div><div class="about__pillar-body">We measure success by the results we create for your business. The focus is on real outcomes, not feature counts or hours billed.</div></div></div>
+            <div class="about__pillar"><div class="about__pillar-num">02</div><div><div class="about__pillar-title">Relationship-Driven</div><div class="about__pillar-body">We're a realtionship-driven professional services partner. We understand that every business is unique, with its own set of needs and goals. Built on trust, we take the time to understand each unique business and tailor custom outsoucring solutions to fit.</div></div></div>
+            <div class="about__pillar"><div class="about__pillar-num">03</div><div><div class="about__pillar-title">Senior, Yet Practical</div><div class="about__pillar-body">Paired with delivery models that work within real budgets, timelines and constraints, our network of skilled experts collaborate closely with you and your teams to ensure your vision becomes a reality.</div></div></div>
           </div>
         </div>
         <div>
@@ -781,7 +781,7 @@ const HTML = `<!DOCTYPE html>
           <div class="andrew__name">Andrew Essey</div>
           <div class="andrew__title">Founder</div>
           <p class="andrew__bio">Andrew started in mergers and acquisitions, followed by 10 years of financial and project consulting across the UK and Europe. A member of the Chartered Institute of Management Accountants, he has held senior roles at global organisations including ING, Wells Fargo and JP Morgan.</p>
-          <p class="andrew__bio">Back in South Africa, he spent five-plus years as a senior business head at a major software company before founding Plus3.</p>
+          <p class="andrew__bio">Back in South Africa, he spent 5+ years as a senior business head at a major software company before founding Plus3.</p>
           <div class="andrew__quote"><p>&ldquo;We don&rsquo;t sell solutions. We build the right ones.&rdquo;</p><cite>Andrew Essey &mdash; Founder, Plus3</cite></div>
         </div>
       </div>
@@ -795,12 +795,12 @@ const HTML = `<!DOCTYPE html>
         <div class="green-bar" aria-hidden="true"></div>
         <p class="sec-label">02 &mdash; Our Services</p>
         <h2 class="sec-heading" id="services-h">End-to-end delivery<br><em>capability.</em></h2>
-        <p class="sec-body">From first idea to production &mdash; one partner across the whole journey.</p>
+        <p class="sec-body">From first idea to production, one partner across the whole journey.</p>
       </div>
       <div class="services__grid">
         <article class="service-card"><div class="service-card__num">01</div><h3 class="service-card__title">Consulting &amp; Roadmaps</h3><p class="service-card__body">Define direction, prioritise initiatives and design practical delivery roadmaps aligned to business goals.</p></article>
-        <article class="service-card"><div class="service-card__num">02</div><h3 class="service-card__title">Custom Software Development</h3><p class="service-card__body">Tailored solutions that integrate with existing systems and support future scalability.</p></article>
-        <article class="service-card"><div class="service-card__num">03</div><h3 class="service-card__title">Team Augmentation</h3><p class="service-card__body">Skilled professionals who embed directly into your teams to scale delivery without losing quality.</p></article>
+        <article class="service-card"><div class="service-card__num">02</div><h3 class="service-card__title">Custom Software Development</h3><p class="service-card__body">Tailored solutions that address specific business requirements, integrate with existing systems and support future scalability.</p></article>
+        <article class="service-card"><div class="service-card__num">03</div><h3 class="service-card__title">Team Augmentation</h3><p class="service-card__body">Skilled professionals who embed directly into your teams, as and when you need them, to scale delivery without losing quality.</p></article>
         <article class="service-card"><div class="service-card__num">04</div><h3 class="service-card__title">Cloud, DevOps &amp; Data</h3><p class="service-card__body">Modern architectures and operational best practice for reliability, performance and cost efficiency.</p></article>
         <article class="service-card"><div class="service-card__num">05</div><h3 class="service-card__title">Quality Assurance</h3><p class="service-card__body">Testing and delivery enablement that keep solutions robust under real-world pressure.</p></article>
         <article class="service-card"><div class="service-card__num">06</div><h3 class="service-card__title">Delivery Enablement</h3><p class="service-card__body">Disciplined, transparent execution with shared accountability from concept to production.</p></article>
@@ -817,9 +817,9 @@ const HTML = `<!DOCTYPE html>
           <p class="sec-label">03 &mdash; Why Plus3</p>
           <h2 class="sec-heading" id="why-h">Why clients<br><em>choose us.</em></h2>
           <div class="why__points" style="margin-top:2.5rem;">
-            <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div><div class="why__point-title">We think before we build</div><div class="why__point-body">Solutions grounded in genuine understanding, not assumptions &mdash; we solve the real business problem, not just ship outputs that look good on paper.</div></div></div>
-            <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><div class="why__point-title">A delivery model built on ownership</div><div class="why__point-body">Our specialists are incentivised on delivery quality, growth and client satisfaction &mdash; creating genuine ownership and accountability on every project.</div></div></div>
-            <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><div class="why__point-title">Built to scale with you</div><div class="why__point-body">Practical, modern solutions engineered to grow with your business &mdash; from first build to enterprise scale.</div></div></div>
+            <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div><div class="why__point-title">We think before we build</div><div class="why__point-body">Solutions grounded in genuine understanding, not assumptions. We solve the real business problem, not just ship outputs that look good on paper.</div></div></div>
+            <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><div class="why__point-title">A delivery model built on ownership</div><div class="why__point-body">Our specialists are incentivised on delivery quality, growth and client satisfaction. Creating genuine ownership and accountability on every project.</div></div></div>
+            <div class="why__point"><div class="why__point-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><div class="why__point-title">Built to scale with you</div><div class="why__point-body">Practical, modern solutions engineered to grow with your business from first build to enterprise scale.</div></div></div>
           </div>
         </div>
         <div class="why__visual"><img src="${HERO_BG_URL}" alt="Plus3 technology" loading="lazy"></div>
@@ -861,7 +861,7 @@ const HTML = `<!DOCTYPE html>
   <section class="cta-band" aria-label="Call to action">
     <div class="container cta-band__inner">
       <h2 class="cta-band__heading">Everything starts with<br>a conversation.</h2>
-      <p class="cta-band__sub">No pitch, no pressure &mdash; just a conversation about what you&rsquo;re trying to achieve.</p>
+      <p class="cta-band__sub">No pitch, no pressure. Just a conversation about what you&rsquo;re trying to achieve.</p>
       <div class="cta-band__btns">
         <a href="#contact" class="btn btn--white">Send us a message</a>
         <a href="https://wa.me/27822635227" class="btn btn--outline-white" target="_blank" rel="noopener">WhatsApp us</a>
@@ -877,7 +877,7 @@ const HTML = `<!DOCTYPE html>
           <div class="green-bar" aria-hidden="true"></div>
           <p class="sec-label">05 &mdash; Get in Touch</p>
           <h2 class="sec-heading" id="contact-h">Let&rsquo;s talk.</h2>
-          <p class="sec-body">No matter what your challenge is &mdash; we&rsquo;re here to listen and help find the right solution.</p>
+          <p class="sec-body">No matter what your challenge is, we&rsquo;re here to listen and help find the right solution with you.</p>
           <div class="contact__details">
             <div class="contact__detail">
               <div class="contact__detail-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -889,7 +889,7 @@ const HTML = `<!DOCTYPE html>
             </div>
             <div class="contact__detail">
               <div class="contact__detail-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-              <div><div class="contact__detail-label">Address</div><div class="contact__detail-value">Work Central, Bel Air Shopping Centre<br>Bellairs Dr, Northriding, Johannesburg, 2169</div></div>
+              <div><div class="contact__detail-label">Address</div><div class="contact__detail-value">50 Christo Avenue, Olivedale, Randburg, South Africa</div></div>
             </div>
             <div class="contact__detail">
               <div class="contact__detail-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2H3v16h5l4 4 4-4h5V2z"/></svg></div>
