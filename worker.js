@@ -975,6 +975,7 @@ const HTML = `<!DOCTYPE html>
           <li><a href="#contact">Contact Us</a></li>
           <li><a href="mailto:info@plus3.co.za">info@plus3.co.za</a></li>
           <li><a href="https://www.linkedin.com/company/plus3group/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.linkedin.com/company/plus3group/jobs/" target="_blank" rel="noopener">Jobs &amp; Careers</a></li>
         </ul>
       </div>
     </div>
