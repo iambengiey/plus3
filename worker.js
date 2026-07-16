@@ -14,7 +14,7 @@ const PARTNER_LOGOS = [
   { src: CDN + '/website/Logos/singular_logo.png',       alt: 'Singular' },
   { src: CDN + '/website/Logos/standard_bank_logo.png',   alt: 'Standard Bank' },
   { src: CDN + '/website/Logos/tetrad_group_logo.png',    alt: 'Tetrad Group' },
-  { src: CDN + '/website/Logos/tiltecx_logo.png',         alt: 'Tiltecx' },
+  { src: CDN + '/website/Logos/tiltecx_logo.jpg',         alt: 'Tiltecx' },
 ];
 
 // Double for seamless infinite scroll
