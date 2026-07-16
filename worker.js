@@ -104,16 +104,29 @@ const HTML = `<!DOCTYPE html>
   <script type="application/ld+json">${SCHEMA}<\/script>
 
   <style>
+    /* ── Dark theme (default) ── */
     :root {
       --black:       #000000;
+      --page-bg:     #000000;
+      --surface-bg:  #0d0d0d;
+      --card-bg:     #111411;
+      --border-col:  #1e2a1e;
+      --text-main:   #F0F2ED;
+      --text-muted:  #98A399;
       --green:       #228B22;
       --green-light: #37B34A;
       --green-hi:    #61D26B;
-      --offwhite:    #F0F2ED;
-      --muted:       #98A399;
-      --dark-surface:#0d0d0d;
-      --dark-card:   #111411;
-      --dark-border: #1e2a1e;
+      --nav-bg:      rgba(0,0,0,0.88);
+      --nav-border:  rgba(34,139,34,0.15);
+      --hero-overlay-start: rgba(0,0,0,0.80);
+      --hero-overlay-end:   rgba(0,0,0,0.65);
+      --hero-grad:   linear-gradient(to right, #000000 0%, transparent 30%);
+      --carousel-fade-l: linear-gradient(to right, #0d0d0d, transparent);
+      --carousel-fade-r: linear-gradient(to left,  #0d0d0d, transparent);
+      --footer-bg:   #0d0d0d;
+      --select-bg:   #111;
+      color-scheme: dark;
+
       --nav-height:  72px;
       --font-display:'Playfair Display', Georgia, serif;
       --font-body:   'DM Sans', 'Inter', sans-serif;
@@ -134,6 +147,29 @@ const HTML = `<!DOCTYPE html>
       --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.75rem);
     }
 
+    /* ── Light theme (follows device/OS setting) ── */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --black:       #ffffff;
+        --page-bg:     #ffffff;
+        --surface-bg:  #f4f6f1;
+        --card-bg:     #ffffff;
+        --border-col:  #d0d8ce;
+        --text-main:   #1a1f1a;
+        --text-muted:  #4a5a4b;
+        --nav-bg:      rgba(255,255,255,0.92);
+        --nav-border:  rgba(34,139,34,0.20);
+        --hero-overlay-start: rgba(255,255,255,0.75);
+        --hero-overlay-end:   rgba(255,255,255,0.55);
+        --hero-grad:   linear-gradient(to right, #ffffff 0%, transparent 35%);
+        --carousel-fade-l: linear-gradient(to right, #f4f6f1, transparent);
+        --carousel-fade-r: linear-gradient(to left,  #f4f6f1, transparent);
+        --footer-bg:   #f4f6f1;
+        --select-bg:   #fff;
+        color-scheme: light;
+      }
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
@@ -144,10 +180,11 @@ const HTML = `<!DOCTYPE html>
     body {
       font-family: var(--font-body);
       font-size: var(--text-base);
-      background: var(--black);
-      color: var(--offwhite);
+      background: var(--page-bg);
+      color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.65;
+      transition: background 0.2s, color 0.2s;
     }
     img, svg { display: block; max-width: 100%; }
     ul, ol { list-style: none; }
@@ -166,8 +203,8 @@ const HTML = `<!DOCTYPE html>
     /* ── Layout ── */
     .container { max-width: var(--content-wide); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
     .section { padding-block: clamp(5rem, 9vw, 9rem); }
-    .section--dark { background: var(--black); }
-    .section--surface { background: var(--dark-surface); }
+    .section--dark { background: var(--page-bg); }
+    .section--surface { background: var(--surface-bg); }
 
     /* ── Section labels ── */
     .sec-label {
@@ -183,13 +220,13 @@ const HTML = `<!DOCTYPE html>
       font-family: var(--font-display);
       font-size: var(--text-2xl);
       font-weight: 900;
-      color: var(--offwhite);
+      color: var(--text-main);
       letter-spacing: -0.02em;
       line-height: 1.05;
     }
     .sec-heading em { font-style: normal; color: var(--green-light); }
     .sec-body {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: var(--text-base);
       max-width: 58ch;
       margin-top: 1rem;
@@ -221,22 +258,22 @@ const HTML = `<!DOCTYPE html>
     .btn--green:hover { background: var(--green-light); border-color: var(--green-light); }
     .btn--outline {
       background: transparent;
-      color: var(--offwhite);
-      border: 2px solid rgba(240,242,237,0.35);
+      color: var(--text-main);
+      border: 2px solid rgba(100,120,100,0.35);
     }
-    .btn--outline:hover { border-color: var(--offwhite); background: rgba(240,242,237,0.06); }
+    .btn--outline:hover { border-color: var(--text-main); background: rgba(100,120,100,0.06); }
 
     /* ── NAVIGATION ── */
     .nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-height); z-index: 100;
-      background: rgba(0,0,0,0.88);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
-      border-bottom: 1px solid rgba(34,139,34,0.15);
+      border-bottom: 1px solid var(--nav-border);
       transition: box-shadow var(--t-slow);
     }
-    .nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+    .nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.15); }
     .nav__inner {
       max-width: var(--content-wide);
       margin-inline: auto;
@@ -250,11 +287,11 @@ const HTML = `<!DOCTYPE html>
       padding: 0.45rem 0.9rem;
       font-size: var(--text-sm);
       font-weight: 500;
-      color: var(--muted);
+      color: var(--text-muted);
       border-radius: var(--radius-sm);
       transition: color var(--t-fast), background var(--t-fast);
     }
-    .nav__links a:hover { color: var(--offwhite); background: rgba(255,255,255,0.06); }
+    .nav__links a:hover { color: var(--text-main); background: rgba(100,120,100,0.08); }
     .nav__cta {
       padding: 0.5rem 1.25rem;
       background: var(--green);
@@ -268,27 +305,27 @@ const HTML = `<!DOCTYPE html>
     .nav__hamburger {
       display: none; width: 44px; height: 44px;
       align-items: center; justify-content: center;
-      color: var(--offwhite); border-radius: var(--radius-sm);
+      color: var(--text-main); border-radius: var(--radius-sm);
     }
-    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger:hover { background: rgba(100,120,100,0.08); }
     .nav__mobile {
       position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0;
-      background: var(--black); z-index: 99;
+      background: var(--page-bg); z-index: 99;
       padding: 2rem 1.5rem;
       display: flex; flex-direction: column; gap: 0.5rem;
       transform: translateX(100%);
       transition: transform var(--t-slow) var(--ease-out);
-      border-top: 1px solid var(--dark-border);
+      border-top: 1px solid var(--border-col);
     }
     .nav__mobile.open { transform: translateX(0); }
     .nav__mobile a {
       display: block; padding: 1rem 1.25rem;
       font-size: var(--text-lg); font-weight: 600;
-      color: var(--offwhite); border-radius: var(--radius-md);
+      color: var(--text-main); border-radius: var(--radius-md);
     }
-    .nav__mobile a:hover { background: rgba(255,255,255,0.06); }
+    .nav__mobile a:hover { background: rgba(100,120,100,0.06); }
     .nav__mobile .btn--green { text-align: center; margin-top: 1rem; }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .nav__links, .nav__actions .nav__cta { display: none; }
       .nav__hamburger { display: flex; }
     }
@@ -318,7 +355,7 @@ const HTML = `<!DOCTYPE html>
     }
     @media (max-width: 900px) {
       .hero__left {
-        background: linear-gradient(to bottom, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.65) 100%);
+        background: linear-gradient(to bottom, var(--hero-overlay-start) 0%, var(--hero-overlay-end) 100%);
       }
     }
     .hero__eyebrow {
@@ -334,13 +371,13 @@ const HTML = `<!DOCTYPE html>
       font-weight: 900;
       line-height: 1.04;
       letter-spacing: -0.025em;
-      color: var(--offwhite);
+      color: var(--text-main);
       margin-bottom: 1.5rem;
     }
     .hero__heading em { font-style: normal; color: var(--green-light); }
     .hero__sub {
       font-size: var(--text-lg);
-      color: var(--muted);
+      color: var(--text-muted);
       max-width: 44ch;
       line-height: 1.65;
       margin-bottom: 2.5rem;
@@ -348,7 +385,8 @@ const HTML = `<!DOCTYPE html>
     .hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
     .hero__tagline {
       font-size: var(--text-xs);
-      color: rgba(152,163,153,0.55);
+      color: var(--text-muted);
+      opacity: 0.55;
       font-style: italic;
       letter-spacing: 0.05em;
     }
@@ -372,14 +410,14 @@ const HTML = `<!DOCTYPE html>
     .hero__right::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(to right, var(--black) 0%, transparent 30%);
+      background: var(--hero-grad);
     }
 
     /* ── STATS BAND ── */
     .stats-band {
-      background: var(--dark-surface);
-      border-top: 1px solid var(--dark-border);
-      border-bottom: 1px solid var(--dark-border);
+      background: var(--surface-bg);
+      border-top: 1px solid var(--border-col);
+      border-bottom: 1px solid var(--border-col);
       padding-block: 2.5rem;
       position: relative; z-index: 10;
     }
@@ -398,14 +436,14 @@ const HTML = `<!DOCTYPE html>
     }
     .stat__label {
       font-size: var(--text-xs);
-      color: var(--muted);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-top: 0.35rem;
     }
     .stats-band__divider {
       width: 1px; height: 40px;
-      background: var(--dark-border);
+      background: var(--border-col);
     }
     @media (max-width: 640px) { .stats-band__divider { display: none; } }
 
@@ -424,7 +462,7 @@ const HTML = `<!DOCTYPE html>
     }
     @media (max-width: 768px) { .about__grid { grid-template-columns: 1fr; } }
     .about__body {
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.8;
       margin-bottom: 1.25rem;
     }
@@ -439,16 +477,16 @@ const HTML = `<!DOCTYPE html>
       padding-top: 0.1em;
     }
     .about__pillar-title { font-weight: 700; color: var(--green-hi); margin-bottom: 0.3rem; font-size: var(--text-sm); }
-    .about__pillar-body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
+    .about__pillar-body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
     /* ── ANDREW ── */
     .andrew__img-wrap {
       position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--dark-border);
+      border: 1px solid var(--border-col);
       aspect-ratio: 3/4;
-      background: var(--dark-card);
+      background: var(--card-bg);
       display: flex; align-items: center; justify-content: center;
     }
     .andrew__img-placeholder { font-size: 5rem; opacity: 0.15; }
@@ -462,18 +500,18 @@ const HTML = `<!DOCTYPE html>
       font-family: var(--font-display);
       font-size: var(--text-xl);
       font-weight: 900;
-      color: var(--offwhite);
+      color: var(--text-main);
       margin-bottom: 0.35rem;
     }
     .andrew__title { font-size: var(--text-sm); color: var(--green-light); font-weight: 600; margin-bottom: 1.75rem; }
-    .andrew__bio { color: var(--muted); line-height: 1.8; font-size: var(--text-sm); margin-bottom: 1.25rem; }
+    .andrew__bio { color: var(--text-muted); line-height: 1.8; font-size: var(--text-sm); margin-bottom: 1.25rem; }
     .andrew__quote {
       border-left: 3px solid var(--green);
       padding: 1rem 1.5rem; margin-top: 2rem;
       background: rgba(34,139,34,0.06);
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
     }
-    .andrew__quote p { font-style: italic; color: var(--offwhite); line-height: 1.7; font-size: var(--text-sm); margin-bottom: 0.5rem; }
+    .andrew__quote p { font-style: italic; color: var(--text-main); line-height: 1.7; font-size: var(--text-sm); margin-bottom: 0.5rem; }
     .andrew__quote cite { font-size: var(--text-xs); color: var(--green-light); font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
 
     /* ── SERVICES ── */
@@ -481,23 +519,23 @@ const HTML = `<!DOCTYPE html>
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: var(--dark-border);
-      border: 1px solid var(--dark-border);
+      background: var(--border-col);
+      border: 1px solid var(--border-col);
       border-radius: var(--radius-lg);
       overflow: hidden;
     }
     @media (max-width: 900px) { .services__grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 580px) { .services__grid { grid-template-columns: 1fr; } }
     .service-card {
-      background: var(--dark-card);
+      background: var(--card-bg);
       padding: 2.25rem 2rem;
       transition: background var(--t-fast);
     }
-    .service-card:hover { background: #131813; }
+    .service-card:hover { background: var(--surface-bg); }
     .service-card__num { font-family: var(--font-display); font-size: var(--text-xs); font-weight: 900; color: var(--green); opacity: 0.6; margin-bottom: 1.25rem; }
-    .service-card__title { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--offwhite); margin-bottom: 0.75rem; }
+    .service-card__title { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem; }
     .service-card:hover .service-card__title { color: var(--green-light); }
-    .service-card__body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
+    .service-card__body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
     /* ── WHY PLUS3 ── */
     .why__grid {
@@ -507,7 +545,7 @@ const HTML = `<!DOCTYPE html>
       align-items: center;
     }
     @media (max-width: 768px) { .why__grid { grid-template-columns: 1fr; } }
-    .why__visual { position: relative; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--dark-border); }
+    .why__visual { position: relative; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--border-col); }
     .why__visual img { width: 100%; display: block; filter: grayscale(20%) brightness(0.8); }
     .why__visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(34,139,34,0.25) 0%, transparent 60%); }
     .why__points { display: flex; flex-direction: column; gap: 2rem; }
@@ -521,7 +559,71 @@ const HTML = `<!DOCTYPE html>
       color: var(--green-light);
     }
     .why__point-title { font-weight: 700; color: var(--green-hi); margin-bottom: 0.4rem; font-size: var(--text-sm); }
-    .why__point-body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
+    .why__point-body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      margin-top: clamp(4rem, 6vw, 5rem);
+      padding-top: clamp(3rem, 5vw, 4rem);
+      border-top: 1px solid var(--border-col);
+    }
+    .testimonials__label {
+      font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--green-light); margin-bottom: 0.75rem;
+    }
+    .testimonials__heading {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 2.5rem;
+    }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .testimonials__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .testimonials__grid { grid-template-columns: 1fr; } }
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-col);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: border-color var(--t-fast), transform var(--t-slow) var(--ease-out);
+    }
+    .testimonial-card:hover { border-color: rgba(34,139,34,0.35); transform: translateY(-3px); }
+    .testimonial-card__stars {
+      display: flex; gap: 0.25rem;
+      color: var(--green-light);
+      font-size: 1rem;
+    }
+    .testimonial-card__quote {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .testimonial-card__quote::before { content: '\201C'; }
+    .testimonial-card__quote::after  { content: '\201D'; }
+    .testimonial-card__meta { border-top: 1px solid var(--border-col); padding-top: 1rem; }
+    .testimonial-card__role {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--green-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .testimonial-card__company {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
 
     /* ── ENGAGEMENT MODELS ── */
     .models__grid {
@@ -532,8 +634,8 @@ const HTML = `<!DOCTYPE html>
     @media (max-width: 900px) { .models__grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 540px) { .models__grid { grid-template-columns: 1fr; } }
     .model-card {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
+      background: var(--card-bg);
+      border: 1px solid var(--border-col);
       border-radius: var(--radius-lg);
       padding: 2rem 1.75rem;
       transition: border-color var(--t-fast), transform var(--t-slow) var(--ease-out);
@@ -541,20 +643,20 @@ const HTML = `<!DOCTYPE html>
     .model-card:hover { border-color: rgba(34,139,34,0.4); transform: translateY(-3px); }
     .model-card__num { font-family: var(--font-display); font-size: clamp(2.5rem,4vw,3.5rem); font-weight: 900; color: rgba(34,139,34,0.15); line-height: 1; margin-bottom: 1rem; }
     .model-card__title { font-size: var(--text-sm); font-weight: 700; color: var(--green-hi); margin-bottom: 0.75rem; }
-    .model-card__body { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
+    .model-card__body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
     /* ── CLIENTS CAROUSEL ── */
     .clients-section {
       padding-block: clamp(4rem, 7vw, 7rem);
-      background: var(--dark-surface);
-      border-top: 1px solid var(--dark-border);
+      background: var(--surface-bg);
+      border-top: 1px solid var(--border-col);
     }
     .clients-carousel { overflow: hidden; position: relative; margin-top: 3rem; }
     .clients-carousel::before, .clients-carousel::after {
       content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
     }
-    .clients-carousel::before { left: 0; background: linear-gradient(to right, var(--dark-surface), transparent); }
-    .clients-carousel::after  { right: 0; background: linear-gradient(to left,  var(--dark-surface), transparent); }
+    .clients-carousel::before { left: 0; background: var(--carousel-fade-l); }
+    .clients-carousel::after  { right: 0; background: var(--carousel-fade-r); }
     .clients-track {
       display: flex; align-items: center; gap: 5rem;
       animation: client-scroll 35s linear infinite;
@@ -568,6 +670,9 @@ const HTML = `<!DOCTYPE html>
       filter: brightness(0) invert(1);
       opacity: 0.55;
       transition: opacity var(--t-fast), transform var(--t-fast);
+    }
+    @media (prefers-color-scheme: light) {
+      .client-logo { filter: brightness(0); }
     }
     .client-logo:hover { opacity: 1; transform: scale(1.06); }
 
@@ -612,8 +717,8 @@ const HTML = `<!DOCTYPE html>
       border-radius: var(--radius-md);
       color: var(--green-light);
     }
-    .contact__detail-label { font-size: var(--text-xs); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
-    .contact__detail-value { font-size: var(--text-sm); color: var(--offwhite); margin-top: 0.2rem; font-weight: 500; }
+    .contact__detail-label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .contact__detail-value { font-size: var(--text-sm); color: var(--text-main); margin-top: 0.2rem; font-weight: 500; }
     .contact__detail-value a { color: var(--green-light); }
     .contact__detail-value a:hover { color: var(--green-hi); }
     .socials { display: flex; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap; }
@@ -630,30 +735,30 @@ const HTML = `<!DOCTYPE html>
     .social-btn--li { color: #0a66c2; }
     .social-btn--li:hover { background: #0a66c2; color: #fff; }
     .form-wrap {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
+      background: var(--card-bg);
+      border: 1px solid var(--border-col);
       border-radius: var(--radius-xl);
       padding: 2.5rem;
     }
     .form { display: flex; flex-direction: column; gap: 1.25rem; }
     .form__group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .form__label { font-size: var(--text-sm); font-weight: 600; color: var(--offwhite); }
+    .form__label { font-size: var(--text-sm); font-weight: 600; color: var(--text-main); }
     .form__input, .form__select, .form__textarea {
       padding: 0.75rem 1rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--dark-border);
+      background: rgba(100,120,100,0.04);
+      border: 1px solid var(--border-col);
       border-radius: var(--radius-md);
       font-size: var(--text-sm);
-      color: var(--offwhite);
+      color: var(--text-main);
       transition: border-color var(--t-fast), box-shadow var(--t-fast);
     }
-    .form__input::placeholder, .form__textarea::placeholder { color: var(--muted); opacity: 0.5; }
+    .form__input::placeholder, .form__textarea::placeholder { color: var(--text-muted); opacity: 0.5; }
     .form__input:focus, .form__select:focus, .form__textarea:focus {
       outline: none;
       border-color: var(--green);
       box-shadow: 0 0 0 3px rgba(34,139,34,0.15);
     }
-    .form__select option { background: #111; }
+    .form__select option { background: var(--select-bg); }
     .form__textarea { resize: vertical; min-height: 120px; }
     .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
     @media (max-width: 480px) { .form__row { grid-template-columns: 1fr; } }
@@ -672,12 +777,12 @@ const HTML = `<!DOCTYPE html>
     .form-success.show { display: block; }
     .form-success__icon { font-size: 3rem; margin-bottom: 1rem; color: var(--green-light); }
     .form-success__title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); margin-bottom: 0.75rem; }
-    .form-success__body { color: var(--muted); }
+    .form-success__body { color: var(--text-muted); }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark-surface);
-      border-top: 1px solid var(--dark-border);
+      background: var(--footer-bg);
+      border-top: 1px solid var(--border-col);
       padding-block: clamp(3.5rem, 6vw, 5rem);
     }
     .footer__inner {
@@ -688,18 +793,18 @@ const HTML = `<!DOCTYPE html>
     }
     @media (max-width: 768px) { .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; } }
     .footer__logo { height: 40px; width: auto; margin-bottom: 1.25rem; }
-    .footer__tagline { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; max-width: 32ch; }
-    .footer__col-title { font-family: var(--font-body); font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: rgba(152,163,153,0.5); margin-bottom: 1.25rem; }
+    .footer__tagline { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; max-width: 32ch; }
+    .footer__col-title { font-family: var(--font-body); font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); opacity: 0.5; margin-bottom: 1.25rem; }
     .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
-    .footer__links a { font-size: var(--text-sm); color: var(--muted); }
-    .footer__links a:hover { color: var(--offwhite); }
+    .footer__links a { font-size: var(--text-sm); color: var(--text-muted); }
+    .footer__links a:hover { color: var(--text-main); }
     .footer__bottom {
       display: flex; align-items: center; justify-content: space-between;
       padding-top: 2rem;
-      border-top: 1px solid var(--dark-border);
+      border-top: 1px solid var(--border-col);
       gap: 1rem; flex-wrap: wrap;
     }
-    .footer__copy { font-size: var(--text-xs); color: rgba(152,163,153,0.4); }
+    .footer__copy { font-size: var(--text-xs); color: var(--text-muted); opacity: 0.4; }
     @media (max-width: 640px) { .footer__bottom { flex-direction: column; text-align: center; } }
   </style>
 </head>
@@ -714,8 +819,10 @@ const HTML = `<!DOCTYPE html>
     <ul class="nav__links" role="list">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#how-we-work">How We Work</a></li>
+      <li><a href="#how-we-work">Why Plus3</a></li>
+      <li><a href="#engagement">How We Work</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="https://www.linkedin.com/company/plus3group/jobs/" target="_blank" rel="noopener">Jobs &amp; Careers</a></li>
     </ul>
     <div class="nav__actions">
       <a href="#contact" class="nav__cta">Let's talk</a>
@@ -728,8 +835,10 @@ const HTML = `<!DOCTYPE html>
 <div class="nav__mobile" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
   <a href="#about" class="mobile-link">About</a>
   <a href="#services" class="mobile-link">Services</a>
-  <a href="#how-we-work" class="mobile-link">How We Work</a>
+  <a href="#how-we-work" class="mobile-link">Why Plus3</a>
+  <a href="#engagement" class="mobile-link">How We Work</a>
   <a href="#contact" class="mobile-link">Contact</a>
+  <a href="https://www.linkedin.com/company/plus3group/jobs/" target="_blank" rel="noopener" class="mobile-link">Jobs &amp; Careers</a>
   <a href="#contact" class="btn btn--green mobile-link">Let's talk &rarr;</a>
 </div>
 
@@ -837,6 +946,82 @@ const HTML = `<!DOCTYPE html>
         </div>
         <div class="why__visual"><img src="${CDN}/website/Image1.png" alt="Plus3 technology" loading="lazy"></div>
       </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="testimonials">
+        <p class="testimonials__label">Client Testimonials</p>
+        <h3 class="testimonials__heading">What our clients say.</h3>
+        <div class="testimonials__grid">
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-card__quote">Plus3 didn&rsquo;t just deliver a solution &mdash; they took the time to understand our business first. The team embedded seamlessly with ours and the quality of output was consistently high. We&rsquo;ve extended our engagement twice already.</p>
+            <div class="testimonial-card__meta">
+              <div class="testimonial-card__role">Head of Technology</div>
+              <div class="testimonial-card__company">Financial Services &mdash; Johannesburg</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-card__quote">The honesty and transparency throughout the project set Plus3 apart. They flagged risks early, proposed practical solutions and delivered on time. Exactly the kind of partner you want when the stakes are high.</p>
+            <div class="testimonial-card__meta">
+              <div class="testimonial-card__role">Chief Operating Officer</div>
+              <div class="testimonial-card__company">Healthcare Technology &mdash; Cape Town</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-card__quote">We came to Plus3 with a half-formed idea and a tight deadline. They helped us shape the roadmap, assembled the right team, and got us to market faster than we expected. The ongoing support has been just as strong.</p>
+            <div class="testimonial-card__meta">
+              <div class="testimonial-card__role">Founder &amp; CEO</div>
+              <div class="testimonial-card__company">SaaS Startup &mdash; Sandton</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-card__quote">What impressed us most was how quickly the Plus3 team got up to speed. Senior, sharp, and genuinely invested in getting it right. Our internal team felt supported throughout &mdash; never replaced.</p>
+            <div class="testimonial-card__meta">
+              <div class="testimonial-card__role">Engineering Manager</div>
+              <div class="testimonial-card__company">Retail Technology &mdash; Pretoria</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-card__quote">Plus3 brought structure to a project that was heading off the rails. Their delivery enablement approach gave us visibility, accountability and confidence again. I&rsquo;d recommend them without hesitation.</p>
+            <div class="testimonial-card__meta">
+              <div class="testimonial-card__role">Project Director</div>
+              <div class="testimonial-card__company">Professional Services &mdash; Johannesburg</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-card__quote">We needed QA expertise fast and Plus3 delivered the right people within days. They integrated with our existing processes, identified critical issues early, and helped us release with confidence. Outstanding service.</p>
+            <div class="testimonial-card__meta">
+              <div class="testimonial-card__role">Head of Product</div>
+              <div class="testimonial-card__company">Logistics Technology &mdash; Durban</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
