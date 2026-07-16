@@ -339,7 +339,7 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '    <p class="cta-band__sub">Let&#39;s talk about what you&#39;re building and how Plus3 can help you get there.</p>\n' +
 '    <div class="cta-band__btns">\n' +
 '      <a href="#contact" class="btn btn--white">Start a conversation</a>\n' +
-'      <a href="tel:+27822635227" class="btn btn--outline-white">Call us now</a>\n' +
+'      <a href="https://wa.me/27822635227?text=Hi%20Plus3%2C%20I%20was%20on%20your%20website%20and%20I%20need%20help%20with..." target="_blank" rel="noopener" class="btn btn--outline-white">&#128172; Drop us a WhatsApp</a>\n' +
 '    </div>\n' +
 '  </div>\n' +
 '</div>\n' +
@@ -438,5 +438,5 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '})();\n' +
 '</script>\n' +
 '</body>\n' +
-'</html>';
-}
+'</html>';\n' +
+'}\n'
