@@ -104,7 +104,7 @@ const HTML = `<!DOCTYPE html>
   <script type="application/ld+json">${SCHEMA}<\/script>
 
   <style>
-    /* ── Dark theme (default) ── */
+    /* -- Dark theme (default) -- */
     :root {
       --black:       #000000;
       --page-bg:     #000000;
@@ -147,7 +147,7 @@ const HTML = `<!DOCTYPE html>
       --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.75rem);
     }
 
-    /* ── Light theme (follows device/OS setting) ── */
+    /* -- Light theme (follows device/OS setting) -- */
     @media (prefers-color-scheme: light) {
       :root {
         --black:       #ffffff;
@@ -200,13 +200,13 @@ const HTML = `<!DOCTYPE html>
     }
     .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0; }
 
-    /* ── Layout ── */
+    /* -- Layout -- */
     .container { max-width: var(--content-wide); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
     .section { padding-block: clamp(5rem, 9vw, 9rem); }
     .section--dark { background: var(--page-bg); }
     .section--surface { background: var(--surface-bg); }
 
-    /* ── Section labels ── */
+    /* -- Section labels -- */
     .sec-label {
       font-family: var(--font-body);
       font-size: var(--text-xs);
@@ -239,7 +239,7 @@ const HTML = `<!DOCTYPE html>
       margin-bottom: 1.5rem;
     }
 
-    /* ── Buttons ── */
+    /* -- Buttons -- */
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.85rem 1.75rem;
@@ -263,7 +263,7 @@ const HTML = `<!DOCTYPE html>
     }
     .btn--outline:hover { border-color: var(--text-main); background: rgba(100,120,100,0.06); }
 
-    /* ── NAVIGATION ── */
+    /* -- NAVIGATION -- */
     .nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-height); z-index: 100;
@@ -330,7 +330,7 @@ const HTML = `<!DOCTYPE html>
       .nav__hamburger { display: flex; }
     }
 
-    /* ── HERO ── */
+    /* -- HERO -- */
     .hero {
       min-height: 100dvh;
       display: grid;
@@ -391,7 +391,7 @@ const HTML = `<!DOCTYPE html>
       letter-spacing: 0.05em;
     }
 
-    /* Fixed right-half image panel — desktop only */
+    /* Fixed right-half image panel - desktop only */
     .hero__right {
       position: fixed;
       top: 0; right: 0;
@@ -413,7 +413,7 @@ const HTML = `<!DOCTYPE html>
       background: var(--hero-grad);
     }
 
-    /* ── STATS BAND ── */
+    /* -- STATS BAND -- */
     .stats-band {
       background: var(--surface-bg);
       border-top: 1px solid var(--border-col);
@@ -453,7 +453,7 @@ const HTML = `<!DOCTYPE html>
       z-index: 10;
     }
 
-    /* ── ABOUT ── */
+    /* -- ABOUT -- */
     .about__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -479,7 +479,7 @@ const HTML = `<!DOCTYPE html>
     .about__pillar-title { font-weight: 700; color: var(--green-hi); margin-bottom: 0.3rem; font-size: var(--text-sm); }
     .about__pillar-body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
-    /* ── ANDREW ── */
+    /* -- ANDREW -- */
     .andrew__img-wrap {
       position: relative;
       border-radius: var(--radius-lg);
@@ -514,7 +514,7 @@ const HTML = `<!DOCTYPE html>
     .andrew__quote p { font-style: italic; color: var(--text-main); line-height: 1.7; font-size: var(--text-sm); margin-bottom: 0.5rem; }
     .andrew__quote cite { font-size: var(--text-xs); color: var(--green-light); font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
 
-    /* ── SERVICES ── */
+    /* -- SERVICES -- */
     .services__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -537,7 +537,7 @@ const HTML = `<!DOCTYPE html>
     .service-card:hover .service-card__title { color: var(--green-light); }
     .service-card__body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
-    /* ── WHY PLUS3 ── */
+    /* -- WHY PLUS3 -- */
     .why__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -561,7 +561,7 @@ const HTML = `<!DOCTYPE html>
     .why__point-title { font-weight: 700; color: var(--green-hi); margin-bottom: 0.4rem; font-size: var(--text-sm); }
     .why__point-body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
-    /* ── TESTIMONIALS ── */
+    /* -- TESTIMONIALS -- */
     .testimonials {
       margin-top: clamp(4rem, 6vw, 5rem);
       padding-top: clamp(3rem, 5vw, 4rem);
@@ -609,8 +609,8 @@ const HTML = `<!DOCTYPE html>
       line-height: 1.75;
       flex: 1;
     }
-    .testimonial-card__quote::before { content: '\201C'; }
-    .testimonial-card__quote::after  { content: '\201D'; }
+    .testimonial-card__quote::before { content: '\u201C'; }
+    .testimonial-card__quote::after  { content: '\u201D'; }
     .testimonial-card__meta { border-top: 1px solid var(--border-col); padding-top: 1rem; }
     .testimonial-card__role {
       font-size: var(--text-xs);
@@ -625,7 +625,7 @@ const HTML = `<!DOCTYPE html>
       margin-top: 0.2rem;
     }
 
-    /* ── ENGAGEMENT MODELS ── */
+    /* -- ENGAGEMENT MODELS -- */
     .models__grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -645,7 +645,7 @@ const HTML = `<!DOCTYPE html>
     .model-card__title { font-size: var(--text-sm); font-weight: 700; color: var(--green-hi); margin-bottom: 0.75rem; }
     .model-card__body { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
 
-    /* ── CLIENTS CAROUSEL ── */
+    /* -- CLIENTS CAROUSEL -- */
     .clients-section {
       padding-block: clamp(4rem, 7vw, 7rem);
       background: var(--surface-bg);
@@ -676,7 +676,7 @@ const HTML = `<!DOCTYPE html>
     }
     .client-logo:hover { opacity: 1; transform: scale(1.06); }
 
-    /* ── CTA BAND ── */
+    /* -- CTA BAND -- */
     .cta-band {
       padding-block: clamp(5rem, 8vw, 8rem);
       background: var(--green);
@@ -699,7 +699,7 @@ const HTML = `<!DOCTYPE html>
     .btn--outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
     .btn--outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
-    /* ── CONTACT ── */
+    /* -- CONTACT -- */
     .contact__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -779,7 +779,7 @@ const HTML = `<!DOCTYPE html>
     .form-success__title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); margin-bottom: 0.75rem; }
     .form-success__body { color: var(--text-muted); }
 
-    /* ── FOOTER ── */
+    /* -- FOOTER -- */
     footer {
       background: var(--footer-bg);
       border-top: 1px solid var(--border-col);
