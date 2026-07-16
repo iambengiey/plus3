@@ -79,7 +79,7 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '@media(max-width:900px){.hero__right{display:none}}\n' +
 '.hero__right img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}\n' +
 '.hero__right::after{content:\'\';position:absolute;inset:0;background:var(--hero-grad)}\n' +
-'.stats-band{background:var(--surface-bg);border-top:1px solid var(--border-col);border-bottom:1px solid var(--border-col);padding-block:2.5rem;position:relative;z-index:10}\n' +
+'.stats-band{background:#d4f0da;border-top:1px solid var(--border-col);border-bottom:1px solid var(--border-col);padding-block:2.5rem;position:relative;z-index:10}\n' +
 '.stats-band__inner{display:flex;flex-wrap:wrap;gap:2rem 4rem;align-items:center;justify-content:space-between}\n' +
 '.stat__value{font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);font-weight:900;color:var(--green-light);line-height:1}\n' +
 '.stat__label{font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.35rem}\n' +
@@ -439,5 +439,4 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '})();\n' +
 '</script>\n' +
 '</body>\n' +
-'</html>';
-}
+'</html>';\n}\n
