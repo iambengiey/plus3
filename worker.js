@@ -1,4 +1,4 @@
-const CDN            = 'https://cdn.jsdelivr.net/gh/iambengiey/plus3@main';
+const CDN            = 'https://cdn.jsdelivr.net/gh/iambengiey/plus3@92e8fc26b638800b9279897f970b1d2dbc9046d3';
 const LOGO_URL       = CDN + '/website/logo.png';
 const LOGO_WHITE_URL = CDN + '/website/logo.png';
 const HERO_BG_URL    = CDN + '/website/bg.png';
@@ -452,7 +452,7 @@ const HTML = `<!DOCTYPE html>
       display: flex; align-items: center; justify-content: center;
     }
     .andrew__img-placeholder { font-size: 5rem; opacity: 0.15; }
-    .andrew__img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); display: block; }
+    .andrew__img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); display: block; }
     .andrew__label {
       font-size: var(--text-xs); font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.12em;
