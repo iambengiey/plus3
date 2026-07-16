@@ -125,6 +125,7 @@ const HTML = `<!DOCTYPE html>
       --carousel-fade-r: linear-gradient(to left,  #0d0d0d, transparent);
       --footer-bg:   #0d0d0d;
       --select-bg:   #111;
+      --logo-filter: brightness(0) invert(1);
       color-scheme: dark;
 
       --nav-height:  72px;
@@ -166,6 +167,7 @@ const HTML = `<!DOCTYPE html>
         --carousel-fade-r: linear-gradient(to left,  #f4f6f1, transparent);
         --footer-bg:   #f4f6f1;
         --select-bg:   #fff;
+        --logo-filter: brightness(0) saturate(0);
         color-scheme: light;
       }
     }
@@ -316,6 +318,7 @@ const HTML = `<!DOCTYPE html>
       transform: translateX(100%);
       transition: transform var(--t-slow) var(--ease-out);
       border-top: 1px solid var(--border-col);
+      overflow-y: auto;
     }
     .nav__mobile.open { transform: translateX(0); }
     .nav__mobile a {
@@ -667,12 +670,9 @@ const HTML = `<!DOCTYPE html>
     .client-logo {
       height: 52px; width: auto; max-width: 160px;
       object-fit: contain; flex-shrink: 0;
-      filter: brightness(0) invert(1);
-      opacity: 0.55;
+      filter: var(--logo-filter);
+      opacity: 0.65;
       transition: opacity var(--t-fast), transform var(--t-fast);
-    }
-    @media (prefers-color-scheme: light) {
-      .client-logo { filter: brightness(0); }
     }
     .client-logo:hover { opacity: 1; transform: scale(1.06); }
 
