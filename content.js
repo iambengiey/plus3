@@ -421,8 +421,8 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '      </div>\n' +
 '    </div>\n' +
 '    <div class="footer__bottom">\n' +
-'      <p class="footer__copy">&copy; 2025 Plus3 Solutions. All rights reserved.</p>\n' +
-'      <p class="footer__copy">50 Christo Avenue, Olivedale, Johannesburg, 2188</p>\n' +
+'      <p class="footer__copy">&copy; new Date().getFullYear() Plus3 Solutions. All rights reserved.</p>\n' +
+'      <p class="footer__copy">WorkCentral Office Space Bel Air Shopping Centre, Bellairs Dr, Northriding, Johannesburg, 2169</p>\n' +
 '    </div>\n' +
 '  </div>\n' +
 '</footer>\n' +
