@@ -1,4 +1,4 @@
-const CDN            = 'https://cdn.jsdelivr.net/gh/iambengiey/plus3@60b258b40c4d21843bca5a218128f4ad3ec69a86';
+const CDN            = 'https://cdn.jsdelivr.net/gh/iambengiey/plus3@main';
 const LOGO_URL       = CDN + '/website/logo.png';
 const LOGO_WHITE_URL = CDN + '/website/logo.png';
 const HERO_BG_URL    = CDN + '/website/bg.png';
