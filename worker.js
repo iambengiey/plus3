@@ -1,6 +1,6 @@
 import { buildHTML } from './content.js';
 
-const CDN            = 'https://cdn.jsdelivr.net/gh/iambengiey/plus3@main';
+const CDN            = 'https://raw.githubusercontent.com/iambengiey/plus3/main';
 const LOGO_URL       = CDN + '/website/logo.png';
 const HERO_BG_URL    = CDN + '/website/bg.png';
 
