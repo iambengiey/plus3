@@ -24,7 +24,8 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '<meta name="twitter:title" content="Plus3 Solutions | Tech Talent to Bring Your Ideas to Life">\n' +
 '<meta name="twitter:description" content="Modern technology partner delivering smarter, results-driven tech solutions across South Africa.">\n' +
 '<meta name="twitter:image" content="' + heroUrl + '">\n' +
-'<link rel="icon" type="image/png" href="' + logoUrl + '">\n' +
+'<link rel="icon" type="image/svg+xml" href="' + cdnBase + '/website/favicon_light_mode.svg" media="(prefers-color-scheme: light)">\n' +
+'<link rel="icon" type="image/svg+xml" href="' + cdnBase + '/website/favicon_dark_mode.svg" media="(prefers-color-scheme: dark)">\n' +
 '<link rel="apple-touch-icon" href="' + logoUrl + '">\n' +
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n' +
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
