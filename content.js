@@ -440,4 +440,4 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '</script>\n' +
 '</body>\n' +
 '</html>';
-'}\n'
+}
