@@ -552,7 +552,7 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '});\n' +
 '}\n' +
 '})();\n' +
-'<\/script>\n' +
-'</body>\n' +
-'</html>';\n' +
-'}\n'
+'<\\/script>\\n' +
+'</body>\\n' +
+'</html>';
+}
