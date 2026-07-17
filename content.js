@@ -439,5 +439,5 @@ export function buildHTML(heroUrl, logoUrl, cdnBase, carouselImgs, schema) {
 '})();\n' +
 '</script>\n' +
 '</body>\n' +
-'</html>';\n' +
+'</html>';
 '}\n'
